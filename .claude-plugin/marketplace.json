@@ -1,10 +1,13 @@
 {
   "name": "karbassi-note-taker",
   "description": "Note-taker plugin marketplace",
+  "owner": {
+    "name": "Ali Karbassi"
+  },
   "plugins": [
     {
       "name": "claude-note-taker-plugin",
-      "path": "."
+      "source": "."
     }
   ]
 }
