@@ -13,7 +13,7 @@ A Claude Code plugin that runs a background note-taker to capture decisions, act
 ## Installation
 
 ```bash
-claude plugin install github:karbassi/claude-note-taker-plugin
+claude plugin marketplace add karbassi/claude-note-taker-plugin
 ```
 
 ## What It Captures
