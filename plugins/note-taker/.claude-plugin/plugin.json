@@ -1,11 +1,11 @@
 {
-  "name": "claude-note-taker-plugin",
+  "name": "note-taker",
   "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
   "version": "1.0.0-beta",
   "author": {
     "name": "Ali Karbassi"
   },
-  "repository": "https://github.com/karbassi/claude-note-taker-plugin",
+  "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
   "keywords": ["notes", "documentation", "assistant"]
 }

@@ -1,13 +1,21 @@
 {
-  "name": "karbassi-note-taker",
-  "description": "Note-taker plugin marketplace",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "karbassi-claude-plugins",
+  "description": "Collection of Claude Code plugins by Ali Karbassi",
   "owner": {
     "name": "Ali Karbassi"
   },
   "plugins": [
     {
-      "name": "claude-note-taker-plugin",
-      "source": "."
+      "name": "note-taker",
+      "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/note-taker",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
     }
   ]
 }
