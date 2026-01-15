@@ -1,0 +1,30 @@
+{
+  "name": "claude-note-taker-plugin",
+  "version": "1.0.0",
+  "description": "A Claude Code plugin that runs a background note-taker to capture decisions, action items, blockers, and technical findings",
+  "keywords": [
+    "claude-code-plugin",
+    "note-taking",
+    "executive-assistant"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "claude-code": {
+    "agents": "./agents",
+    "hooks": {
+      "UserPromptSubmit": [
+        {
+          "hooks": [
+            {
+              "type": "command",
+              "command": "hooks/trigger-notes.sh"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
