@@ -9,7 +9,7 @@ hooks:
     - matcher: "Write|Edit"
       hooks:
         - type: command
-          command: "hooks/restrict-to-docs.sh"
+          command: "${CLAUDE_PLUGIN_ROOT}/hooks/restrict-to-docs.sh"
 ---
 
 You are an executive assistant and note-taker. Your job is to capture key insights from conversations without being a raw logger.
