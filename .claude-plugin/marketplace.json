@@ -4,7 +4,7 @@
   "plugins": [
     {
       "name": "claude-note-taker-plugin",
-      "path": ".."
+      "path": "."
     }
   ]
 }
