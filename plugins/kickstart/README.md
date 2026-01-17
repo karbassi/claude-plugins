@@ -17,7 +17,26 @@ Running `/kickstart` will ask you a few questions and then create:
 | `CLAUDE.md` | Project goals and development patterns |
 | `TODO.md` | Task tracking with markdown checklists |
 | `CHANGELOG.md` | Version history following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) |
+| `README.md` | Project readme |
 | `docs/README.md` | Research folder with guidelines |
+| `.gitignore` | Common ignores for dependencies, builds, IDE files |
+
+## Plugin Structure
+
+```
+kickstart/
+├── commands/
+│   └── kickstart.md      # Command logic
+└── templates/            # Editable templates
+    ├── CLAUDE.md
+    ├── TODO.md
+    ├── CHANGELOG.md
+    ├── README.md
+    ├── docs-README.md
+    └── gitignore.txt
+```
+
+Templates are separate files - customize them to fit your workflow.
 
 ## Patterns Included
 
@@ -56,6 +75,6 @@ What are the first 3-5 tasks?
 > 2. Set up Python project structure
 > 3. Implement authentication
 
-[Creates CLAUDE.md, TODO.md, CHANGELOG.md, docs/README.md]
+[Creates CLAUDE.md, TODO.md, CHANGELOG.md, README.md, docs/README.md, .gitignore]
 [Commits and pushes]
 ```
