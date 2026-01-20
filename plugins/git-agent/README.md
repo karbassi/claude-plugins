@@ -14,6 +14,26 @@ A Claude Code plugin that provides a subagent for handling git operations (commi
 claude plugin install git-agent@karbassi/claude-plugins
 ```
 
+## Permissions (Optional)
+
+To auto-approve git commands without prompts, add these to your project's `.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)"
+    ]
+  }
+}
+```
+
 ## Usage
 
 The git subagent can be invoked to handle git operations for your project. It follows these rules:

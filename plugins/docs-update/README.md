@@ -6,7 +6,7 @@ A Claude Code plugin that provides a subagent for updating project documentation
 
 - **Documentation-focused** - Keeps README and docs/ up to date
 - **Concise style** - Produces scannable, well-formatted content
-- **Auto-commits** - Commits changes after updating docs
+- **Web research** - Can fetch external docs for reference
 
 ## Installation
 
@@ -25,8 +25,7 @@ It follows these rules:
 
 - Keeps content concise and scannable
 - Uses code blocks for examples
-- Updates README.md when design changes
-- Commits with short descriptive messages
+- Matches existing documentation style
 
 ## Plugin Structure
 

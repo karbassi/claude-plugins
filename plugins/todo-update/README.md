@@ -6,7 +6,7 @@ A Claude Code plugin that provides a subagent for keeping TODO.md current with t
 
 - **Lightweight** - Uses Haiku model for fast updates
 - **Structured format** - Organizes tasks by status (In Progress, Pending, Completed)
-- **Auto-commits** - Commits changes after updating TODO.md
+- **Consistent formatting** - Maintains checkbox syntax and section organization
 
 ## Installation
 
