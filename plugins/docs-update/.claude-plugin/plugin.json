@@ -1,7 +1,7 @@
 {
   "name": "docs-update",
   "description": "A subagent that updates project documentation files",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.2",
   "author": {
     "name": "Ali Karbassi"
   },

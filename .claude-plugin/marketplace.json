@@ -9,7 +9,7 @@
     {
       "name": "note-taker",
       "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
-      "version": "1.0.0-beta",
+      "version": "1.0.0-beta.2",
       "author": {
         "name": "Ali Karbassi"
       },
@@ -20,7 +20,7 @@
     {
       "name": "git-agent",
       "description": "A subagent that handles all git operations (commit, stage, etc.)",
-      "version": "1.0.0-beta",
+      "version": "1.0.0-beta.2",
       "author": {
         "name": "Ali Karbassi"
       },
@@ -31,7 +31,7 @@
     {
       "name": "docs-update",
       "description": "A subagent that updates project documentation files",
-      "version": "1.0.0-beta",
+      "version": "1.0.0-beta.2",
       "author": {
         "name": "Ali Karbassi"
       },
@@ -42,7 +42,7 @@
     {
       "name": "todo-update",
       "description": "A subagent that keeps TODO.md current with task status",
-      "version": "1.0.0-beta",
+      "version": "1.0.0-beta.2",
       "author": {
         "name": "Ali Karbassi"
       },
@@ -53,7 +53,7 @@
     {
       "name": "browser-research",
       "description": "A subagent for browser automation and web research using chrome-devtools",
-      "version": "1.0.0-beta",
+      "version": "1.0.0-beta.2",
       "author": {
         "name": "Ali Karbassi"
       },

@@ -1,7 +1,7 @@
 {
   "name": "git-agent",
   "description": "A subagent that handles all git operations (commit, stage, etc.)",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.2",
   "author": {
     "name": "Ali Karbassi"
   },

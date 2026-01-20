@@ -1,7 +1,7 @@
 {
   "name": "todo-update",
   "description": "A subagent that keeps TODO.md current with task status",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.2",
   "author": {
     "name": "Ali Karbassi"
   },
