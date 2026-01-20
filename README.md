@@ -15,25 +15,22 @@ claude plugin marketplace add karbassi/claude-plugins
 Then install individual plugins:
 
 ```bash
-claude plugin install note-taker@karbassi/claude-plugins
-claude plugin install git-agent@karbassi/claude-plugins
-claude plugin install docs-update@karbassi/claude-plugins
-claude plugin install todo-update@karbassi/claude-plugins
-claude plugin install browser-research@karbassi/claude-plugins
-claude plugin install github@karbassi/claude-plugins
+claude plugin install note-taker@karbassi-claude-plugins
+claude plugin install git-agent@karbassi-claude-plugins
+claude plugin install docs-update@karbassi-claude-plugins
+claude plugin install todo-update@karbassi-claude-plugins
+claude plugin install browser-research@karbassi-claude-plugins
+claude plugin install github@karbassi-claude-plugins
 ```
 
 ### Project-Local Installation
 
-To add plugins only to a specific project (not globally), use the `--local` flag:
+To add plugins only to a specific project (not globally), use the `--scope local` flag:
 
 ```bash
-# Add marketplace to project
-claude plugin marketplace add karbassi/claude-plugins --local
-
 # Install plugins locally
-claude plugin install note-taker@karbassi/claude-plugins --local
-claude plugin install github@karbassi/claude-plugins --local
+claude plugin install note-taker@karbassi-claude-plugins --scope local
+claude plugin install github@karbassi-claude-plugins --scope local
 ```
 
 This creates plugin configuration in your project's `.claude/` directory, making the plugins available only when working in that project.
