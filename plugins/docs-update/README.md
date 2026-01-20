@@ -11,7 +11,7 @@ A Claude Code plugin that provides a subagent for updating project documentation
 ## Installation
 
 ```bash
-claude plugin install docs-update@karbassi/claude-plugins
+claude plugin install docs-update@karbassi-claude-plugins
 ```
 
 ## Usage

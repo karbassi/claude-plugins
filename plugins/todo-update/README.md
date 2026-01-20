@@ -11,7 +11,7 @@ A Claude Code plugin that provides a subagent for keeping TODO.md current with t
 ## Installation
 
 ```bash
-claude plugin install todo-update@karbassi/claude-plugins
+claude plugin install todo-update@karbassi-claude-plugins
 ```
 
 ## Usage

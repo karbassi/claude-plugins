@@ -11,7 +11,7 @@ A Claude Code plugin that provides a subagent for handling git operations (commi
 ## Installation
 
 ```bash
-claude plugin install git-agent@karbassi/claude-plugins
+claude plugin install git-agent@karbassi-claude-plugins
 ```
 
 ## Permissions (Optional)

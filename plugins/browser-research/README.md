@@ -11,7 +11,7 @@ A Claude Code plugin that provides a subagent for browser automation and web res
 ## Installation
 
 ```bash
-claude plugin install browser-research@karbassi/claude-plugins
+claude plugin install browser-research@karbassi-claude-plugins
 ```
 
 ## Requirements
