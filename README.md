@@ -4,41 +4,44 @@ A collection of Claude Code plugins by Ali Karbassi.
 
 ## Installation
 
-### Global Installation
-
-Install plugins globally so they're available in all projects:
+First, add the marketplace:
 
 ```bash
 claude plugin marketplace add karbassi/claude-plugins
 ```
 
-Then install individual plugins:
+Then install plugins with your preferred scope:
 
 ```bash
-claude plugin install note-taker@karbassi-claude-plugins
-claude plugin install git-agent@karbassi-claude-plugins
-claude plugin install docs-update@karbassi-claude-plugins
-claude plugin install todo-update@karbassi-claude-plugins
-claude plugin install browser-research@karbassi-claude-plugins
-claude plugin install github@karbassi-claude-plugins
+claude plugin install github@karbassi-claude-plugins --scope <scope>
 ```
 
-### Project-Local Installation
+### Installation Scopes
 
-To add plugins only to a specific project (not globally), use the `--scope local` flag:
+| Scope | Flag | Description |
+|-------|------|-------------|
+| **user** | `--scope user` | Installed globally for your user account. Available in all projects. This is the default if no scope is specified. |
+| **project** | `--scope project` | Installed for the current project. Configuration stored in project settings and can be shared via version control. |
+| **local** | `--scope local` | Installed for the current working directory only. Most restrictive scope. |
+
+### Examples
 
 ```bash
-# Install plugins locally
-claude plugin install note-taker@karbassi-claude-plugins --scope local
+# Install globally (available everywhere)
+claude plugin install github@karbassi-claude-plugins --scope user
+
+# Install for this project (recommended for team projects)
+claude plugin install github@karbassi-claude-plugins --scope project
+
+# Install for this directory only
 claude plugin install github@karbassi-claude-plugins --scope local
 ```
 
-This creates plugin configuration in your project's `.claude/` directory, making the plugins available only when working in that project.
+### Which scope should I use?
 
-**When to use local installation:**
-- Project-specific workflows that don't apply elsewhere
-- Testing plugins before installing globally
-- Sharing plugin configuration with your team via version control
+- **`user`** - Personal plugins you want everywhere (default)
+- **`project`** - Team projects where plugins should be shared via version control
+- **`local`** - Testing plugins or directory-specific workflows
 
 ## Available Plugins
 
