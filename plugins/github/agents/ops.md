@@ -1,5 +1,5 @@
 ---
-name: github
+name: ops
 description: |
   Use this agent for all GitHub operations including:
 
@@ -46,7 +46,7 @@ description: |
   assistant: "I'll fix the issue, then use the github agent to reply and resolve the review thread."
   <commentary>User wants to respond to and resolve review comments</commentary>
   </example>
-tools: ["Bash", "Read", "Grep", "Glob"]
+tools: ["Bash", "Read", "Grep", "Glob", "Edit"]
 model: sonnet
 ---
 
