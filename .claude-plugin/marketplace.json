@@ -16,6 +16,50 @@
       "source": "./plugins/note-taker",
       "category": "productivity",
       "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "git-agent",
+      "description": "A subagent that handles all git operations (commit, stage, etc.)",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/git-agent",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "docs-update",
+      "description": "A subagent that updates project documentation files",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/docs-update",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "todo-update",
+      "description": "A subagent that keeps TODO.md current with task status",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/todo-update",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "browser-research",
+      "description": "A subagent for browser automation and web research using chrome-devtools",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/browser-research",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
     }
   ]
 }
