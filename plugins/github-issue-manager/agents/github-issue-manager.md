@@ -1,6 +1,38 @@
 ---
 name: github-issue-manager
-description: Use this agent when the user requests a new feature, reports a bug, describes work that should be tracked in GitHub Issues, OR when asked to find the next task to work on. This includes:\n\n- When user says things like 'can you add...', 'I need...', 'there's a bug where...', 'it would be nice if...'\n- When user describes functionality that doesn't exist yet\n- When user reports unexpected behavior or errors\n- When user suggests improvements or enhancements\n- After completing exploratory work that reveals needed improvements\n- When user asks "what's next?", "what should I work on?", or "find the next task"\n\nExamples:\n\n<example>\nuser: "The candidate list should show the application date"\nassistant: "I'll use the github-issue-manager agent to check if there's already an issue for this feature request and create or update one accordingly."\n<Task tool invocation to github-issue-manager agent>\n</example>\n\n<example>\nuser: "When I click the reject button, nothing happens"\nassistant: "Let me use the github-issue-manager agent to document this bug in GitHub Issues."\n<Task tool invocation to github-issue-manager agent>\n</example>\n\n<example>\nuser: "Can you make the filters persist across page reloads?"\nassistant: "I'll check existing issues and create or update one for this feature using the github-issue-manager agent."\n<Task tool invocation to github-issue-manager agent>\n</example>\n\n<example>\nuser: "What's the next task?"\nassistant: "I'll use the github-issue-manager agent to find the next most relevant task from the issue backlog."\n<Task tool invocation to github-issue-manager agent>\n</example>
+description: |
+  Use this agent when the user requests a new feature, reports a bug, describes
+  work that should be tracked in GitHub Issues, OR when asked to find the next
+  task to work on. This includes:
+
+  - When user says things like "can you add...", "I need...", "there's a bug where...", "it would be nice if..."
+  - When user describes functionality that doesn't exist yet
+  - When user reports unexpected behavior or errors
+  - When user suggests improvements or enhancements
+  - After completing exploratory work that reveals needed improvements
+  - When user asks "what's next?", "what should I work on?", or "find the next task"
+
+  <example>
+  Context: User requests a new feature
+  user: "The candidate list should show the application date"
+  assistant: "I'll use the github-issue-manager agent to check if there's already an issue for this feature request and create or update one accordingly."
+  <commentary>User describes functionality that doesn't exist yet</commentary>
+  </example>
+
+  <example>
+  Context: User reports a bug
+  user: "When I click the reject button, nothing happens"
+  assistant: "Let me use the github-issue-manager agent to document this bug in GitHub Issues."
+  <commentary>User reports unexpected behavior</commentary>
+  </example>
+
+  <example>
+  Context: User wants to know what to work on next
+  user: "What's the next task?"
+  assistant: "I'll use the github-issue-manager agent to find the next most relevant task from the issue backlog."
+  <commentary>User asks for task prioritization</commentary>
+  </example>
+tools: ["Bash", "Read", "Grep", "Glob"]
 model: sonnet
 ---
 

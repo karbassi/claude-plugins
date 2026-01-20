@@ -16,6 +16,17 @@
       "source": "./plugins/note-taker",
       "category": "productivity",
       "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "github-issue-manager",
+      "description": "A product manager agent that creates and manages GitHub Issues from user requests",
+      "version": "1.0.0-beta",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/github-issue-manager",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
     }
   ]
 }

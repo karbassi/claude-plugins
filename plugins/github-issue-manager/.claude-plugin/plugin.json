@@ -1,0 +1,11 @@
+{
+  "name": "github-issue-manager",
+  "description": "A product manager agent that creates and manages GitHub Issues from user requests",
+  "version": "1.0.0-beta",
+  "author": {
+    "name": "Ali Karbassi"
+  },
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "keywords": ["github", "issues", "product-management", "bug-tracking"]
+}
