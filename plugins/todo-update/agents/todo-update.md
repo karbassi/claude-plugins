@@ -25,6 +25,7 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob", "Grep"]
 model: haiku
+permissionMode: acceptEdits
 color: yellow
 ---
 

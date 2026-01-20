@@ -25,8 +25,8 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob"]
 model: sonnet
-color: magenta
 permissionMode: acceptEdits
+color: magenta
 hooks:
   PreToolUse:
     - matcher: "Write|Edit|Read|Glob"

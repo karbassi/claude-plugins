@@ -32,6 +32,7 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob", "Grep", "WebFetch", "WebSearch"]
 model: sonnet
+permissionMode: acceptEdits
 color: magenta
 ---
 

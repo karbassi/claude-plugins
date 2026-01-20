@@ -30,7 +30,7 @@ description: |
   assistant: "I'll use the browser-research agent to navigate and research."
   <commentary>User needs interactive browsing across multiple pages</commentary>
   </example>
-tools: ["Read", "Glob", "Grep", "WebFetch", "WebSearch"]
+disallowedTools: ["Edit", "Write", "Bash", "Task"]
 model: sonnet
 color: cyan
 ---
