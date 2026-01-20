@@ -1,0 +1,11 @@
+{
+  "name": "todo-update",
+  "description": "A subagent that keeps TODO.md current with task status",
+  "version": "1.0.0-beta.2",
+  "author": {
+    "name": "Ali Karbassi"
+  },
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "keywords": ["todo", "tasks", "subagent", "automation"]
+}
