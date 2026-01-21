@@ -1,7 +1,7 @@
 ---
 name: docs-update
 description: |
-  Use this agent when you need to create, update, or improve project documentation including README files, guides, and technical docs. Examples:
+  Use this agent when you need to create, update, or improve project documentation including README files, guides, and technical docs. Can be run in background with `run_in_background: true` to avoid blocking. Examples:
 
   <example>
   Context: New feature has been implemented
@@ -32,7 +32,7 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob", "Grep", "WebFetch", "WebSearch"]
 model: sonnet
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 color: magenta
 ---
 

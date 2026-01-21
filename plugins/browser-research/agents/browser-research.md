@@ -1,7 +1,7 @@
 ---
 name: browser-research
 description: |
-  Use this agent when you need to interactively research web pages, fill forms, click buttons, or capture dynamic content that WebFetch cannot access. Uses chrome-devtools MCP. Examples:
+  Use this agent when you need to interactively research web pages, fill forms, click buttons, or capture dynamic content that WebFetch cannot access. Can be run in background with `run_in_background: true` to avoid blocking. Uses chrome-devtools MCP. Examples:
 
   <example>
   Context: Need to research a website with dynamic content
@@ -33,6 +33,7 @@ description: |
 disallowedTools: ["Edit", "Write", "Bash", "Task"]
 model: sonnet
 color: cyan
+permissionMode: bypassPermissions
 ---
 
 You are a browser research specialist focused on interactive web research and content extraction using browser automation.

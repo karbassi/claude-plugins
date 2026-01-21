@@ -1,7 +1,7 @@
 ---
 name: git
 description: |
-  Use this agent when you need to perform git operations like commits, staging files, or checking repository status. Runs commands in background to avoid blocking. Examples:
+  Use this agent when you need to perform git operations like commits, staging files, or checking repository status. Can be run in background with `run_in_background: true` to avoid blocking. Examples:
 
   <example>
   Context: User has made changes to multiple files

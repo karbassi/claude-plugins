@@ -1,7 +1,7 @@
 ---
 name: note-taker
 description: |
-  Use this agent when you need to capture key insights from conversations including decisions, action items, blockers, and findings. Examples:
+  Use this agent when you need to capture key insights from conversations including decisions, action items, blockers, and findings. Can be run in background with `run_in_background: true` to avoid blocking. Examples:
 
   <example>
   Context: Conversation has been ongoing with important decisions made
@@ -25,7 +25,7 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob"]
 model: sonnet
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 color: magenta
 hooks:
   PreToolUse:

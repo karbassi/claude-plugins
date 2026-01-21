@@ -1,7 +1,7 @@
 ---
 name: ops
 description: |
-  Use this agent for all GitHub operations including:
+  Use this agent for all GitHub operations. Can be run in background with `run_in_background: true` to avoid blocking. Operations include:
 
   **Issues:**
   - Feature requests, bug reports, task tracking

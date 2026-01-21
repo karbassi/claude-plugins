@@ -1,7 +1,7 @@
 ---
 name: todo-update
 description: |
-  Use this agent when you need to add, update, or mark tasks complete in the project's TODO.md file. Keeps tasks organized by status. Examples:
+  Use this agent when you need to add, update, or mark tasks complete in the project's TODO.md file. Can be run in background with `run_in_background: true` to avoid blocking. Examples:
 
   <example>
   Context: User completed a task
@@ -25,7 +25,7 @@ description: |
   </example>
 tools: ["Read", "Write", "Edit", "Glob", "Grep"]
 model: haiku
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 color: yellow
 ---
 
