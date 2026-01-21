@@ -5,6 +5,7 @@
   "author": {
     "name": "Ali Karbassi"
   },
+  "homepage": "https://github.com/karbassi/claude-plugins/tree/main/plugins/note-taker",
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
   "keywords": ["notes", "documentation", "assistant"]
