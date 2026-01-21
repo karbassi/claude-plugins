@@ -1,0 +1,12 @@
+{
+  "name": "changelog-manager",
+  "description": "A subagent that maintains CHANGELOG.md following Keep a Changelog format",
+  "version": "1.0.0-beta.1",
+  "author": {
+    "name": "Ali Karbassi"
+  },
+  "homepage": "https://github.com/karbassi/claude-plugins/tree/main/plugins/changelog-manager",
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "keywords": ["changelog", "documentation", "subagent", "version", "release"]
+}

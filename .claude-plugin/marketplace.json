@@ -71,6 +71,17 @@
       "source": "./plugins/github",
       "category": "productivity",
       "homepage": "https://github.com/karbassi/claude-plugins"
+    },
+    {
+      "name": "changelog-manager",
+      "description": "A subagent that maintains CHANGELOG.md following Keep a Changelog format",
+      "version": "1.0.0-beta.1",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/changelog-manager",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins"
     }
   ]
 }
