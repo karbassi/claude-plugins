@@ -26,6 +26,7 @@ description: |
 tools: ["Bash", "Read", "Glob", "Grep"]
 model: haiku
 color: green
+permissionMode: bypassPermissions
 ---
 
 You are a git operations specialist focused on safe, efficient version control management.
