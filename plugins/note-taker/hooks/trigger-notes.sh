@@ -1,6 +1,8 @@
 #!/bin/bash
 # Triggers note-taker subagent every 3 conversation exchanges
 
+set -euo pipefail
+
 COUNTER_FILE="${CLAUDE_PROJECT_DIR:-.}/.claude/.note-counter"
 
 # Configurable output directory (default: docs)
@@ -30,3 +32,4 @@ if [ "$COUNT" -ge 3 ]; then
 else
     echo '{"continue": true}'
 fi
+exit 0

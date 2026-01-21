@@ -2,6 +2,8 @@
 # Restricts Read/Write/Edit/Glob operations to configured output directory
 # Pure bash - no external dependencies
 
+set -euo pipefail
+
 # Read input from stdin
 INPUT=$(cat)
 
@@ -113,3 +115,4 @@ fi
 
 # Validate the path
 validate_path "$FILE_PATH"
+exit 0
