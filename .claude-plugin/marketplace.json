@@ -9,13 +9,15 @@
     {
       "name": "note-taker",
       "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
-      "version": "1.0.0-beta.2",
+      "version": "1.0.0-beta.4",
       "author": {
         "name": "Ali Karbassi"
       },
       "source": "./plugins/note-taker",
       "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins"
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "skills": ["./skills/capture"],
+      "commands": ["./skills/capture/capture.md"]
     },
     {
       "name": "git-agent",

@@ -11,13 +11,6 @@ description: |
   </example>
 
   <example>
-  Context: Hook triggers after 3 conversation exchanges
-  user: "[automatic trigger]"
-  assistant: "Running note-taker in background to capture recent insights."
-  <commentary>Proactive trigger via hook to capture ongoing insights</commentary>
-  </example>
-
-  <example>
   Context: Important decisions were just discussed
   user: "document what we decided"
   assistant: "I'll use the note-taker agent to capture these decisions."
@@ -27,12 +20,6 @@ tools: ["Read", "Write", "Edit", "Glob"]
 model: sonnet
 permissionMode: acceptEdits
 color: magenta
-hooks:
-  PreToolUse:
-    - matcher: "Write|Edit|Read|Glob"
-      hooks:
-        - type: command
-          command: "${CLAUDE_PLUGIN_ROOT}/hooks/restrict-to-docs.sh"
 ---
 
 You are an executive assistant and note-taker. Your job is to capture key insights from conversations without being a raw logger.
