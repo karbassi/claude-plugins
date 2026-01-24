@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-01-24
+
+### Added
+
+- General PR comments support in `/github:fix-pr` skill
+  - Fetches issue comments in addition to review threads
+  - Handles comments that can't be "resolved" like review threads
+- Reaction workflow for visual feedback
+  - 👀 when starting work on a comment
+  - 👍 when agreeing with feedback
+  - 👎 when disagreeing with feedback
+  - Removes 👀 after replying/resolving
+- API commands for adding/removing reactions
+- Edge cases for bot comments and stale PR comments
+
+### Fixed
+
+- Clarified that GitHub issue comments don't support threading
+
 ## [1.0.0] - 2026-01-24
 
 ### Changed
