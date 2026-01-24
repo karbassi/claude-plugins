@@ -41,6 +41,7 @@ Address PR code review feedback systematically. Fetch both review threads (line 
 
 7. **Reply to the reviewer**
    - Reply to the comment thread explaining what was changed
+   - Always link to the commit SHA (e.g., "Fixed in abc1234")
 
 8. **Remove the 👀 reaction**
    - Remove the eyes reaction now that you've addressed and replied
@@ -78,6 +79,7 @@ General PR comments cannot be "resolved" like review threads. Handle them as fol
 
 4. **Reply to the comment**
    - Post a new PR comment that clearly references the original (e.g., by quoting or linking it)
+   - Always link to the commit SHA (e.g., "Fixed in abc1234")
    - Use the REST API to create this new comment on the same pull request
 
 5. **Remove the 👀 reaction**
@@ -94,6 +96,14 @@ gh pr view --json number -q '.number'
 
 ### Fetch unresolved review threads
 
+First get the owner and repo separately:
+```bash
+OWNER=$(gh repo view --json owner -q '.owner.login')
+REPO=$(gh repo view --json name -q '.name')
+PR_NUMBER=$(gh pr view --json number -q '.number')
+```
+
+Then fetch review threads:
 ```bash
 gh api graphql -f query='
 query($owner: String!, $repo: String!, $number: Int!) {
@@ -119,19 +129,14 @@ query($owner: String!, $repo: String!, $number: Int!) {
       }
     }
   }
-}'
-```
-
-Get owner/repo from:
-```bash
-gh repo view --json owner,name -q '.owner.login + "/" + .name'
+}' -f owner="$OWNER" -f repo="$REPO" -F number="$PR_NUMBER"
 ```
 
 ### Fetch general PR comments (issue comments)
 
 These are comments on the PR itself, not on specific lines of code:
 ```bash
-gh api repos/OWNER/REPO/issues/PR_NUMBER/comments
+gh api repos/$OWNER/$REPO/issues/$PR_NUMBER/comments
 ```
 
 Or using GraphQL:
@@ -151,25 +156,28 @@ query($owner: String!, $repo: String!, $number: Int!) {
       }
     }
   }
-}'
+}' -f owner="$OWNER" -f repo="$REPO" -F number="$PR_NUMBER"
 ```
 
 ### Add reactions to a comment
 
 Reaction values: `eyes`, `+1`, `-1`, `laugh`, `confused`, `heart`, `hooray`, `rocket`
 
-For review thread comments (use databaseId):
+**Note:** Use the numeric `databaseId` from the GraphQL response, not the GraphQL node `id`.
+
+For review thread comments:
 ```bash
-gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='eyes'
-gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='+1'
-gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='-1'
+# COMMENT_DATABASE_ID is the numeric databaseId (e.g., 2724647402)
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='-1'
 ```
 
-For general PR comments (use databaseId):
+For general PR comments:
 ```bash
-gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='eyes'
-gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='+1'
-gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='-1'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='-1'
 ```
 
 ### Remove 👀 reaction from a comment
@@ -177,24 +185,24 @@ gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content
 First, get the reaction ID:
 ```bash
 # For review thread comments
-gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions
 
 # For general PR comments
-gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions
 ```
 
 Then delete the reaction:
 ```bash
-gh api -X DELETE repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions/REACTION_ID
+gh api -X DELETE repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions/$REACTION_ID
 # or for pull request review comments:
-gh api -X DELETE repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions/REACTION_ID
+gh api -X DELETE repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions/$REACTION_ID
 ```
 
 ### Reply to a general PR comment
 
 GitHub issue comments don't support threading. Post a new comment that references the original:
 ```bash
-gh api repos/OWNER/REPO/issues/PR_NUMBER/comments -f body='> Original comment quote
+gh api repos/$OWNER/$REPO/issues/$PR_NUMBER/comments -f body='> Original comment quote
 
 Your reply here'
 ```
