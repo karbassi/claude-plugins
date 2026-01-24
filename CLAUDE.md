@@ -1,5 +1,12 @@
 # Claude Plugins
 
+## Release Process
+
+When making changes to a plugin:
+1. Bump the version in `plugin.json` (patch for fixes, minor for features)
+2. Update `CHANGELOG.md` with the changes
+3. Commit version bump separately: `chore(<plugin>): bump version to X.Y.Z`
+
 ## Known Issues & Workarounds
 
 ### Plugin Skills Not Showing in Slash Menu (2026-01-24)
