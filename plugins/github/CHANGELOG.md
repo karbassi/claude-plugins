@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.5] - 2026-01-24
+
+### Fixed
+
+- Applied symlink workaround for plugin skill visibility bug ([anthropics/claude-code#17271](https://github.com/anthropics/claude-code/issues/17271))
+  - Skills now appear in slash command menu
+  - Added `commands` array to plugin.json
+
+## [1.0.0-beta.4] - 2026-01-24
+
+### Fixed
+
+- Renamed skill file to SKILL.md for auto-discovery
+
+## [1.0.0-beta.3] - 2026-01-24
+
 ### Added
 
 - `/github:fix-pr` skill for systematically addressing PR review feedback
