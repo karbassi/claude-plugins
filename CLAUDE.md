@@ -1,5 +1,33 @@
 # Claude Plugins
 
+## Plugin Structure
+
+Each plugin lives in `plugins/<name>/` with:
+```
+plugins/<name>/
+├── .claude-plugin/
+│   └── plugin.json      # Required: name, version, description
+├── agents/              # Subagents (auto-invoked by Claude)
+│   └── <agent>.md
+├── skills/              # User-invocable commands (/<plugin>:<skill>)
+│   └── <skill>/
+│       └── SKILL.md     # Or <skill>.md with symlink (see workaround below)
+├── CHANGELOG.md
+└── README.md
+```
+
+## Agents vs Skills
+
+- **Agents**: Auto-invoked by Claude based on task context. User doesn't call them directly.
+- **Skills**: User-invoked via `/<plugin>:<skill>`. Add `user-invocable: true` in frontmatter.
+
+## Local Development
+
+Test plugins locally by symlinking to Claude's plugin directory:
+```bash
+ln -s ~/Projects/personal/claude-plugins/plugins/<name> ~/.claude/plugins/<name>
+```
+
 ## Release Process
 
 When making changes to a plugin:
