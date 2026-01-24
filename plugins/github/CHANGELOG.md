@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-01-24
+
+### Fixed
+
+- Added missing GraphQL variable parameters (`-f owner`, `-f repo`, `-F number`) to example commands
+
 ## [1.1.1] - 2026-01-24
 
 ### Fixed
