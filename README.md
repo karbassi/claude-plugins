@@ -53,6 +53,7 @@ claude plugin install github@karbassi-claude-plugins --scope local
 | [todo-update](./plugins/todo-update/) | Subagent that keeps TODO.md current with task status |
 | [browser-research](./plugins/browser-research/) | Subagent for browser automation and web research |
 | [github](./plugins/github/) | Unified GitHub agent for issues, PRs, and code reviews |
+| [youtube-transcript](./plugins/youtube-transcript/) | Fetch and present transcripts from YouTube videos |
 
 ## Structure
 
@@ -66,7 +67,8 @@ claude-plugins/
 │   ├── docs-update/        # Documentation updates
 │   ├── todo-update/        # Task tracking
 │   ├── browser-research/   # Browser automation
-│   └── github/             # GitHub issues & PR reviews
+│   ├── github/             # GitHub issues & PR reviews
+│   └── youtube-transcript/ # YouTube video transcripts
 └── README.md
 ```
 
