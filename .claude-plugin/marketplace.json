@@ -8,91 +8,31 @@
   "plugins": [
     {
       "name": "note-taker",
-      "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
-      "version": "1.0.0-beta.4",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/note-taker",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "skills": ["./skills/capture"],
-      "commands": ["./skills/capture/capture.md"],
-      "strict": false
+      "source": "./plugins/note-taker"
     },
     {
       "name": "git-agent",
-      "description": "A subagent that handles all git operations (commit, stage, etc.)",
-      "version": "1.0.0-beta.2",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/git-agent",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "strict": false
+      "source": "./plugins/git-agent"
     },
     {
       "name": "docs-update",
-      "description": "A subagent that updates project documentation files",
-      "version": "1.0.0-beta.2",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/docs-update",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "strict": false
+      "source": "./plugins/docs-update"
     },
     {
       "name": "todo-update",
-      "description": "A subagent that keeps TODO.md current with task status",
-      "version": "1.0.0-beta.2",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/todo-update",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "strict": false
+      "source": "./plugins/todo-update"
     },
     {
       "name": "browser-research",
-      "description": "A subagent for browser automation and web research using chrome-devtools",
-      "version": "1.0.0-beta.2",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/browser-research",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "strict": false
+      "source": "./plugins/browser-research"
     },
     {
       "name": "github",
-      "description": "Unified GitHub agent for issues, PRs, and code reviews",
-      "version": "1.0.0-beta.3",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/github",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "skills": ["./skills/fix-pr"],
-      "strict": false
+      "source": "./plugins/github"
     },
     {
       "name": "youtube-transcript",
-      "description": "Fetch and present transcripts from YouTube videos using yt-dlp",
-      "version": "1.0.0",
-      "author": {
-        "name": "Ali Karbassi"
-      },
-      "source": "./plugins/youtube-transcript",
-      "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins",
-      "skills": ["./skills/transcript"],
-      "strict": false
+      "source": "./plugins/youtube-transcript"
     }
   ]
 }
