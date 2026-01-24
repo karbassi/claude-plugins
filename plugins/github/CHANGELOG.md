@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.3] - 2026-01-24
+
+### Fixed
+
+- Use shell variables (`$OWNER`, `$REPO`, `$PR_NUMBER`) instead of placeholders
+- Rename `$COMMENT_ID` to `$COMMENT_DATABASE_ID` to clarify it's the numeric databaseId
+- Always link to commit SHA when replying to feedback
+
+### Changed
+
+- Switch to Context7 HTTP transport per official recommendation
+
 ## [1.1.2] - 2026-01-24
 
 ### Fixed
