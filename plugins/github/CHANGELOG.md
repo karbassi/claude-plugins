@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `/github:fix-pr` skill for systematically addressing PR review feedback
+  - Fetches unresolved review threads
+  - Evaluates each comment and prompts for disagreements
+  - Makes fixes, tests, commits, and pushes
+  - Replies to reviewers and resolves threads
+
 ## [1.0.0-beta] - 2026-01-20
 
 ### Added

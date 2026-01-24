@@ -1,7 +1,7 @@
 {
   "name": "github",
   "description": "Unified GitHub agent for issues, PRs, and code reviews",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "author": {
     "name": "Ali Karbassi"
   },
