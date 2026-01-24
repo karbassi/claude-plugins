@@ -19,7 +19,7 @@ plugins/<name>/
 ## Agents vs Skills
 
 - **Agents**: Auto-invoked by Claude based on task context. User doesn't call them directly.
-- **Skills**: User-invoked via `/<plugin>:<skill>`. Add `user-invocable: true` in frontmatter.
+- **Skills**: User-invoked via `/<plugin>:<skill>`. Add `user-invocable: true` in frontmatter (currently ignored due to known issue below, but include for future compatibility).
 
 ## References
 

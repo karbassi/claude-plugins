@@ -161,18 +161,21 @@ query($owner: String!, $repo: String!, $number: Int!) {
 
 Reaction values: `eyes`, `+1`, `-1`, `laugh`, `confused`, `heart`, `hooray`, `rocket`
 
-For review thread comments (use databaseId):
+**Note:** Use the numeric `databaseId` from the GraphQL response, not the GraphQL node `id`.
+
+For review thread comments:
 ```bash
-gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_ID/reactions -f content='eyes'
-gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_ID/reactions -f content='+1'
-gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_ID/reactions -f content='-1'
+# COMMENT_DATABASE_ID is the numeric databaseId (e.g., 2724647402)
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions -f content='-1'
 ```
 
-For general PR comments (use databaseId):
+For general PR comments:
 ```bash
-gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions -f content='eyes'
-gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions -f content='+1'
-gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions -f content='-1'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions -f content='-1'
 ```
 
 ### Remove 👀 reaction from a comment
@@ -180,17 +183,17 @@ gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions -f content='-1'
 First, get the reaction ID:
 ```bash
 # For review thread comments
-gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_ID/reactions
+gh api repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions
 
 # For general PR comments
-gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions
+gh api repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions
 ```
 
 Then delete the reaction:
 ```bash
-gh api -X DELETE repos/$OWNER/$REPO/issues/comments/$COMMENT_ID/reactions/$REACTION_ID
+gh api -X DELETE repos/$OWNER/$REPO/issues/comments/$COMMENT_DATABASE_ID/reactions/$REACTION_ID
 # or for pull request review comments:
-gh api -X DELETE repos/$OWNER/$REPO/pulls/comments/$COMMENT_ID/reactions/$REACTION_ID
+gh api -X DELETE repos/$OWNER/$REPO/pulls/comments/$COMMENT_DATABASE_ID/reactions/$REACTION_ID
 ```
 
 ### Reply to a general PR comment
