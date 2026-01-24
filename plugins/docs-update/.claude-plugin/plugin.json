@@ -1,11 +1,15 @@
 {
   "name": "docs-update",
   "description": "A subagent that updates project documentation files",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "author": {
     "name": "Ali Karbassi"
   },
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
-  "keywords": ["documentation", "subagent", "automation"]
+  "keywords": [
+    "documentation",
+    "subagent",
+    "automation"
+  ]
 }

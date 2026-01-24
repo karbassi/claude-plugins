@@ -1,11 +1,15 @@
 {
   "name": "git-agent",
   "description": "A subagent that handles all git operations (commit, stage, etc.)",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "author": {
     "name": "Ali Karbassi"
   },
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
-  "keywords": ["git", "subagent", "automation"]
+  "keywords": [
+    "git",
+    "subagent",
+    "automation"
+  ]
 }

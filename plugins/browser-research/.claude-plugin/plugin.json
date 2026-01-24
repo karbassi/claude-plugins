@@ -1,11 +1,17 @@
 {
   "name": "browser-research",
   "description": "A subagent for browser automation and web research using chrome-devtools",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "author": {
     "name": "Ali Karbassi"
   },
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
-  "keywords": ["browser", "research", "automation", "subagent", "chrome-devtools"]
+  "keywords": [
+    "browser",
+    "research",
+    "automation",
+    "subagent",
+    "chrome-devtools"
+  ]
 }

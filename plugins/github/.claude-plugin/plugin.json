@@ -1,13 +1,23 @@
 {
   "name": "github",
   "description": "Unified GitHub agent for issues, PRs, and code reviews",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0",
   "author": {
     "name": "Ali Karbassi"
   },
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
-  "keywords": ["github", "issues", "pull-requests", "code-review", "product-management"],
-  "skills": ["./skills/fix-pr"],
-  "commands": ["./skills/fix-pr/fix-pr.md"]
+  "keywords": [
+    "github",
+    "issues",
+    "pull-requests",
+    "code-review",
+    "product-management"
+  ],
+  "skills": [
+    "./skills/fix-pr"
+  ],
+  "commands": [
+    "./skills/fix-pr/fix-pr.md"
+  ]
 }

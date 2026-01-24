@@ -1,13 +1,23 @@
 {
   "name": "note-taker",
   "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0",
   "author": {
     "name": "Ali Karbassi"
   },
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
-  "keywords": ["notes", "documentation", "assistant"],
-  "skills": ["./skills/capture"],
-  "commands": ["./skills/capture/capture.md", "./commands/init.md", "./commands/status.md"]
+  "keywords": [
+    "notes",
+    "documentation",
+    "assistant"
+  ],
+  "skills": [
+    "./skills/capture"
+  ],
+  "commands": [
+    "./skills/capture/capture.md",
+    "./commands/init.md",
+    "./commands/status.md"
+  ]
 }
