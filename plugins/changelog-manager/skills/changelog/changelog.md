@@ -44,14 +44,16 @@ Update the project's CHANGELOG.md with recent changes, following [Keep a Changel
 ## [Unreleased]
 
 ### Added
-- New feature description ([`abc1234`](../../commit/abc1234))
+- New feature description (abc1234)
 
 ### Changed
 - Updated behavior description (#123)
 
 ### Fixed
-- Bug fix description ([`def5678`](../../commit/def5678), fixes #456)
+- Bug fix description (def5678, fixes #456)
 ```
+
+Note: Use short commit SHAs (7 chars). GitHub auto-links #123 to issues/PRs.
 
 ## Categories (Keep a Changelog)
 
