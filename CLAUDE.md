@@ -21,6 +21,13 @@ plugins/<name>/
 - **Agents**: Auto-invoked by Claude based on task context. User doesn't call them directly.
 - **Skills**: User-invoked via `/<plugin>:<skill>`. Add `user-invocable: true` in frontmatter.
 
+## References
+
+When developing plugins, consult:
+- **Context7**: Use `context7` MCP to fetch latest Claude Code documentation
+- **Official docs**: https://docs.anthropic.com/en/docs/claude-code
+- **Official plugin repo**: https://github.com/anthropics/claude-code-plugins
+
 ## Local Development
 
 Test plugins locally by symlinking to Claude's plugin directory:
