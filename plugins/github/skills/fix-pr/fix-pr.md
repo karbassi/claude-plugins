@@ -124,7 +124,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
 
 Get owner/repo from:
 ```bash
-gh repo view --json owner,name -q '"\(.owner.login)" "\(.name)"'
+gh repo view --json owner,name -q '.owner.login + "/" + .name'
 ```
 
 ### Fetch general PR comments (issue comments)
