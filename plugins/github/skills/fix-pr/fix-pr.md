@@ -94,6 +94,13 @@ gh pr view --json number -q '.number'
 
 ### Fetch unresolved review threads
 
+First get the owner/repo:
+```bash
+gh repo view --json owner,name -q '.owner.login + "/" + .name'
+# Returns: owner/repo
+```
+
+Then fetch review threads (replace OWNER, REPO, NUMBER):
 ```bash
 gh api graphql -f query='
 query($owner: String!, $repo: String!, $number: Int!) {
@@ -119,12 +126,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
       }
     }
   }
-}'
-```
-
-Get owner/repo from:
-```bash
-gh repo view --json owner,name -q '.owner.login + "/" + .name'
+}' -f owner='OWNER' -f repo='REPO' -F number=NUMBER
 ```
 
 ### Fetch general PR comments (issue comments)
@@ -134,7 +136,7 @@ These are comments on the PR itself, not on specific lines of code:
 gh api repos/OWNER/REPO/issues/PR_NUMBER/comments
 ```
 
-Or using GraphQL:
+Or using GraphQL (replace OWNER, REPO, NUMBER):
 ```bash
 gh api graphql -f query='
 query($owner: String!, $repo: String!, $number: Int!) {
@@ -151,7 +153,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
       }
     }
   }
-}'
+}' -f owner='OWNER' -f repo='REPO' -F number=NUMBER
 ```
 
 ### Add reactions to a comment
