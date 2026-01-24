@@ -41,6 +41,7 @@ Address PR code review feedback systematically. Fetch both review threads (line 
 
 7. **Reply to the reviewer**
    - Reply to the comment thread explaining what was changed
+   - Always link to the commit SHA (e.g., "Fixed in abc1234")
 
 8. **Remove the 👀 reaction**
    - Remove the eyes reaction now that you've addressed and replied
@@ -78,6 +79,7 @@ General PR comments cannot be "resolved" like review threads. Handle them as fol
 
 4. **Reply to the comment**
    - Post a new PR comment that clearly references the original (e.g., by quoting or linking it)
+   - Always link to the commit SHA (e.g., "Fixed in abc1234")
    - Use the REST API to create this new comment on the same pull request
 
 5. **Remove the 👀 reaction**
