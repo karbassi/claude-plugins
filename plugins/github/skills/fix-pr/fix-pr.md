@@ -77,8 +77,8 @@ General PR comments cannot be "resolved" like review threads. Handle them as fol
    - Same process as review threads: fix, test, commit, push
 
 4. **Reply to the comment**
-   - Post a threaded reply to the specific comment
-   - Use the REST API to reply in the same thread
+   - Post a new PR comment that clearly references the original (e.g., by quoting or linking it)
+   - Use the REST API to create this new comment on the same pull request
 
 5. **Remove the 👀 reaction**
    - Remove the eyes reaction now that you've addressed and replied
@@ -190,13 +190,14 @@ gh api -X DELETE repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions/
 gh api -X DELETE repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions/REACTION_ID
 ```
 
-### Reply to a general PR comment (threaded)
+### Reply to a general PR comment
 
+GitHub issue comments don't support threading. Post a new comment that references the original:
 ```bash
-gh api repos/OWNER/REPO/issues/PR_NUMBER/comments -f body='Your reply here'
-```
+gh api repos/OWNER/REPO/issues/PR_NUMBER/comments -f body='> Original comment quote
 
-Note: GitHub issue comments don't support true threading, but posting a new comment with context (e.g., quoting the original) serves the same purpose.
+Your reply here'
+```
 
 ### Reply to a review thread
 
