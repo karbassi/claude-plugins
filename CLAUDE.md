@@ -32,7 +32,7 @@ When developing plugins, consult:
 
 Test plugins locally by symlinking to Claude's plugin directory:
 ```bash
-ln -s ~/Projects/personal/claude-plugins/plugins/<name> ~/.claude/plugins/<name>
+ln -s <path-to-repo>/plugins/<name> ~/.claude/plugins/<name>
 ```
 
 ## Release Process
