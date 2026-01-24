@@ -17,7 +17,8 @@
       "category": "productivity",
       "homepage": "https://github.com/karbassi/claude-plugins",
       "skills": ["./skills/capture"],
-      "commands": ["./skills/capture/capture.md"]
+      "commands": ["./skills/capture/capture.md"],
+      "strict": false
     },
     {
       "name": "git-agent",
@@ -28,7 +29,8 @@
       },
       "source": "./plugins/git-agent",
       "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins"
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "strict": false
     },
     {
       "name": "docs-update",
@@ -39,7 +41,8 @@
       },
       "source": "./plugins/docs-update",
       "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins"
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "strict": false
     },
     {
       "name": "todo-update",
@@ -50,7 +53,8 @@
       },
       "source": "./plugins/todo-update",
       "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins"
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "strict": false
     },
     {
       "name": "browser-research",
@@ -61,7 +65,8 @@
       },
       "source": "./plugins/browser-research",
       "category": "productivity",
-      "homepage": "https://github.com/karbassi/claude-plugins"
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "strict": false
     },
     {
       "name": "github",
@@ -73,7 +78,21 @@
       "source": "./plugins/github",
       "category": "productivity",
       "homepage": "https://github.com/karbassi/claude-plugins",
-      "skills": ["./skills/fix-pr"]
+      "skills": ["./skills/fix-pr"],
+      "strict": false
+    },
+    {
+      "name": "youtube-transcript",
+      "description": "Fetch and present transcripts from YouTube videos using yt-dlp",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ali Karbassi"
+      },
+      "source": "./plugins/youtube-transcript",
+      "category": "productivity",
+      "homepage": "https://github.com/karbassi/claude-plugins",
+      "skills": ["./skills/transcript"],
+      "strict": false
     }
   ]
 }
