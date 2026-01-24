@@ -3,40 +3,49 @@ description: Address PR review feedback by fixing issues and resolving comment t
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, AskUserQuestion
 ---
 
-Address PR code review feedback systematically. Fetch unresolved review threads, evaluate each comment, make fixes, and resolve threads.
+Address PR code review feedback systematically. Fetch both review threads (line comments) and general PR comments (issue comments), evaluate each, make fixes, and resolve/reply as appropriate.
 
 ## Process
 
-For each unresolved review thread:
+### For review threads (line-specific comments)
 
-1. **Evaluate the comment**
+1. **Mark as in-progress**
+   - Add 👀 reaction to the comment to signal you're working on it
+   - Use the comment's `databaseId` with the REST API
+
+2. **Evaluate the comment**
    - Understand what's being suggested
    - Determine if the feedback is valid
-   - If valid: proceed to step 2
+   - Add 👍 reaction if you agree with the feedback
+   - Add 👎 reaction if you disagree
+   - If valid: proceed to step 3
    - If you disagree: Use AskUserQuestion to present options:
      - Accept the feedback anyway
      - Push back with reasoning (explain why in the reply)
      - Skip this comment for now
 
-2. **Make the change**
+3. **Make the change**
    - Implement the requested fix
    - Follow the codebase's existing patterns
 
-3. **Test the change**
+4. **Test the change**
    - Run relevant tests or verify the fix works
    - Ensure no regressions
 
-4. **Commit**
+5. **Commit**
    - Create a commit with a descriptive message
    - Reference the PR in the commit if appropriate
 
-5. **Push to branch**
+6. **Push to branch**
    - Push the changes to the PR branch
 
-6. **Reply to the reviewer**
+7. **Reply to the reviewer**
    - Reply to the comment thread explaining what was changed
 
-7. **Resolve the thread**
+8. **Remove the 👀 reaction**
+   - Remove the eyes reaction now that you've addressed and replied
+
+9. **Resolve the thread**
    ```bash
    gh api graphql -f query='
    mutation($threadId: ID!) {
@@ -46,7 +55,33 @@ For each unresolved review thread:
    }' -f threadId='THREAD_ID'
    ```
 
-8. **Move to next comment**
+10. **Move to next comment**
+
+### For general PR comments (issue comments)
+
+General PR comments cannot be "resolved" like review threads. Handle them as follows:
+
+1. **Mark as in-progress**
+   - Add 👀 reaction to the comment to signal you're working on it
+   - Use the comment's database ID with the REST API
+
+2. **Evaluate the comment**
+   - Determine if it's actionable feedback, a question, or just a note
+   - Add 👍 reaction if you agree with the feedback
+   - Add 👎 reaction if you disagree
+   - If actionable: proceed to step 3
+   - If a question: answer it by replying
+   - If just acknowledgment/note: no action needed
+
+3. **Make any requested changes** (if applicable)
+   - Same process as review threads: fix, test, commit, push
+
+4. **Reply to the comment**
+   - Post a threaded reply to the specific comment
+   - Use the REST API to reply in the same thread
+
+5. **Remove the 👀 reaction**
+   - Remove the eyes reaction now that you've addressed and replied
 
 ## Getting Started
 
@@ -73,6 +108,8 @@ query($owner: String!, $repo: String!, $number: Int!) {
           line
           comments(first: 10) {
             nodes {
+              id
+              databaseId
               body
               author { login }
               createdAt
@@ -90,7 +127,78 @@ Get owner/repo from:
 gh repo view --json owner,name -q '"\(.owner.login)" "\(.name)"'
 ```
 
-### Reply to a thread
+### Fetch general PR comments (issue comments)
+
+These are comments on the PR itself, not on specific lines of code:
+```bash
+gh api repos/OWNER/REPO/issues/PR_NUMBER/comments
+```
+
+Or using GraphQL:
+```bash
+gh api graphql -f query='
+query($owner: String!, $repo: String!, $number: Int!) {
+  repository(owner: $owner, name: $repo) {
+    pullRequest(number: $number) {
+      comments(first: 100) {
+        nodes {
+          id
+          databaseId
+          body
+          author { login }
+          createdAt
+        }
+      }
+    }
+  }
+}'
+```
+
+### Add reactions to a comment
+
+Reaction values: `eyes`, `+1`, `-1`, `laugh`, `confused`, `heart`, `hooray`, `rocket`
+
+For review thread comments (use databaseId):
+```bash
+gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions -f content='-1'
+```
+
+For general PR comments (use databaseId):
+```bash
+gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='eyes'
+gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='+1'
+gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions -f content='-1'
+```
+
+### Remove 👀 reaction from a comment
+
+First, get the reaction ID:
+```bash
+# For review thread comments
+gh api repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions
+
+# For general PR comments
+gh api repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions
+```
+
+Then delete the reaction:
+```bash
+gh api -X DELETE repos/OWNER/REPO/issues/comments/COMMENT_DATABASE_ID/reactions/REACTION_ID
+# or for pull request review comments:
+gh api -X DELETE repos/OWNER/REPO/pulls/comments/COMMENT_DATABASE_ID/reactions/REACTION_ID
+```
+
+### Reply to a general PR comment (threaded)
+
+```bash
+gh api repos/OWNER/REPO/issues/PR_NUMBER/comments -f body='Your reply here'
+```
+
+Note: GitHub issue comments don't support true threading, but posting a new comment with context (e.g., quoting the original) serves the same purpose.
+
+### Reply to a review thread
 
 ```bash
 gh api graphql -f query='
@@ -106,16 +214,19 @@ mutation($threadId: ID!, $body: String!) {
 
 ## Guidelines
 
+- Fetch both review threads AND general PR comments
 - Process comments one at a time for clarity
 - Read the relevant file before making changes
 - Keep commits focused on individual feedback items
 - Be respectful when disagreeing with feedback
 - Skip already-resolved or outdated threads
-- Report progress: "Fixed 3/5 review comments, 2 skipped"
+- Report progress: "Fixed 3/5 review threads, addressed 2 PR comments, 1 skipped"
 
 ## Edge Cases
 
-- **No unresolved threads**: Report "No unresolved review comments"
+- **No feedback**: Report "No unresolved review threads or PR comments to address"
 - **Outdated threads**: Skip with note "Thread is outdated (code has changed)"
 - **Cannot fix**: Ask user how to proceed
 - **Test failures**: Stop and report the issue before continuing
+- **Bot comments**: Skip automated comments from bots (e.g., CI status, coverage reports)
+- **Stale PR comments**: If a general comment has already been addressed in a later commit, note this in your reply
