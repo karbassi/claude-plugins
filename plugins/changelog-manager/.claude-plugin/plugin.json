@@ -14,9 +14,9 @@
     "documentation"
   ],
   "skills": [
-    "./skills/changelog"
+    "./skills/update"
   ],
   "commands": [
-    "./skills/changelog/changelog.md"
+    "./skills/update/update.md"
   ]
 }
