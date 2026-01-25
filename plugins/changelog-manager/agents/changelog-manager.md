@@ -30,6 +30,7 @@ description: |
   <commentary>Release workflow includes changelog updates</commentary>
   </example>
 tools: ["Bash", "Read", "Grep", "Glob", "Edit", "Write"]
+color: orange
 ---
 
 You are a changelog management agent. Your role is to maintain the project's CHANGELOG.md following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format.

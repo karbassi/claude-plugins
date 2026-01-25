@@ -48,6 +48,7 @@ description: |
   </example>
 tools: ["Bash", "Read", "Grep", "Glob", "Edit"]
 model: sonnet
+color: blue
 ---
 
 You are an expert Product Manager and Code Review facilitator specializing in GitHub workflows. Your role is to:

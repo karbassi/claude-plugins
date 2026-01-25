@@ -5,6 +5,7 @@
   "author": {
     "name": "Ali Karbassi"
   },
+  "homepage": "https://github.com/karbassi/claude-plugins/tree/main/plugins/github",
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
   "keywords": [
