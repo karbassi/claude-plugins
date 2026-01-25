@@ -1,0 +1,22 @@
+{
+  "name": "changelog-manager",
+  "description": "Maintain CHANGELOG.md following Keep a Changelog format",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ali Karbassi"
+  },
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "changelog",
+    "versioning",
+    "releases",
+    "documentation"
+  ],
+  "skills": [
+    "./skills/changelog"
+  ],
+  "commands": [
+    "./skills/changelog/changelog.md"
+  ]
+}
