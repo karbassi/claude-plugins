@@ -36,19 +36,14 @@ You are a changelog management agent. Your role is to maintain the project's CHA
 
 ## Process
 
-1. **Get repository info**
-   ```bash
-   REPO_URL=$(gh repo view --json url -q '.url')
-   ```
-
-2. **Analyze recent commits**
+1. **Analyze recent commits**
    ```bash
    git log --oneline $(git describe --tags --abbrev=0 2>/dev/null || echo HEAD~10)..HEAD
    ```
 
-3. **Read existing CHANGELOG.md** to understand format and check for duplicates
+2. **Read existing CHANGELOG.md** to understand format and check for duplicates
 
-4. **Update the changelog** with user-facing changes only
+3. **Update the changelog** with user-facing changes only
 
 ## Filtering Rules
 

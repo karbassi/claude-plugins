@@ -66,11 +66,11 @@ Changes are categorized as:
 
 ```markdown
 ### Added
-- New feature description ([`abc1234`](../../commit/abc1234))
+- New feature description (`abc1234`)
 - Another feature (#123)
 
 ### Fixed
-- Bug fix description ([`def5678`](../../commit/def5678), fixes #456)
+- Bug fix description (`def5678`, fixes #456)
 ```
 
 ## Release Workflow
