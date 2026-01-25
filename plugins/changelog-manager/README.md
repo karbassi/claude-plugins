@@ -13,7 +13,7 @@ claude plugin install changelog-manager@karbassi-claude-plugins
 ### Slash Command
 
 ```
-/changelog
+/changelog-manager:changelog
 ```
 
 Run this command to analyze recent commits and update your CHANGELOG.md.

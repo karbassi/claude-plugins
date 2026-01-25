@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial release
-- Add `/changelog` skill for updating CHANGELOG.md
+- Add `/changelog-manager:changelog` skill for updating CHANGELOG.md
 - Add Keep a Changelog format compliance
 - Add auto-categorization of changes (Added, Changed, Deprecated, Removed, Fixed, Security)
 - Add commit SHA and PR/issue reference support
