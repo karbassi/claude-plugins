@@ -160,6 +160,11 @@ github/
 │   └── plugin.json           # Plugin manifest
 ├── agents/
 │   └── github.md             # Agent definition
+├── rulesets/                 # Reusable repository rulesets
+│   ├── require-pr-for-main.json
+│   ├── copilot-auto-review-default-branch.json
+│   ├── copilot-auto-review-all-branches.json
+│   └── README.md
 ├── CHANGELOG.md
 └── README.md
 ```
