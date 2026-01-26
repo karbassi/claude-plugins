@@ -1,6 +1,6 @@
 ---
 description: Show local git and GitHub repository status
-allowed-tools: Bash
+allowed-tools: Bash, Task
 user-invocable: true
 ---
 
@@ -8,7 +8,9 @@ Display a combined status of the local git repository and GitHub remote, includi
 
 ## Process
 
-Run these commands and present the results in a clear, organized format:
+Use the Task tool with `run_in_background: true` to spawn a background agent that collects all the status information. This allows the user to continue working while the status is gathered.
+
+The background agent should run these commands and compile the results:
 
 ### 1. Local Git Status
 
@@ -45,7 +47,7 @@ If there are merged branches that can be cleaned up, mention them.
 
 ## Output Format
 
-Present the information in a concise summary:
+The background agent should compile results in this format:
 
 **Local Git:**
 - Branch: `branch-name` (up to date / ahead / behind)
@@ -56,3 +58,21 @@ Present the information in a concise summary:
 - X open issues
 
 List the PRs and issues with their numbers and titles.
+
+## Background Execution
+
+1. Launch the Task agent with `run_in_background: true` and `subagent_type: "Bash"`
+2. Tell the user the status check is running in the background
+3. When the agent completes, present the compiled results to the user
+
+Example Task invocation:
+```
+Task tool with:
+  - subagent_type: "Bash"
+  - run_in_background: true
+  - allowed_tools: ["Bash(git *)", "Bash(gh *)"]
+  - description: "Gather git/GitHub status"
+  - prompt: <the commands and output format above>
+```
+
+Note: The `allowed_tools` parameter grants the background agent permission to run git and gh commands without prompting.
