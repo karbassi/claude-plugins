@@ -4,7 +4,7 @@ allowed-tools: Bash, Task, AskUserQuestion
 user-invocable: true
 ---
 
-Display a combined status of the local git repository and GitHub remote, including branch info, working tree status, open PRs, and open issues.
+Display a combined status of the local git repository and GitHub remote, including branch info, working tree status, open PRs, and open issues. Offer contextual suggestions and quick actions.
 
 ## Process
 
@@ -131,6 +131,39 @@ Task tool with:
 ```
 
 Note: The `allowed_tools` parameter grants the background agent permission to run git and gh commands without prompting.
+
+## Workflow Suggestions
+
+After displaying the status, analyze the results and provide contextual suggestions:
+
+### Dirty Working Tree
+If there are uncommitted changes:
+> "You have uncommitted changes. Consider committing or stashing them."
+
+### Behind Remote
+If the branch is behind the remote:
+> "Your branch is X commits behind. Consider pulling: `git pull`"
+
+### Unpushed Commits
+If the branch is ahead of remote:
+> "You have X unpushed commits. Consider pushing: `git push`"
+
+### Failing CI Checks
+If the current PR has failing checks:
+> "CI checks are failing:"
+> - List each failing check with its name
+
+### Pending Reviews
+If the PR needs review:
+> "PR #X is awaiting review."
+
+### Changes Requested
+If the PR has changes requested:
+> "PR #X has changes requested. Run `/github:fix-pr` to address review comments."
+
+### Unresolved Review Comments
+If there are unresolved review threads:
+> "PR #X has unresolved review comments. Run `/github:fix-pr` to address them."
 
 ## Cleanup Actions
 
