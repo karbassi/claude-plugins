@@ -15,27 +15,57 @@ The background agent should run these commands and compile the results:
 ### 1. Local Git Status
 
 ```bash
+# Basic status
 git status
+
+# Last 5 commits
 git log --oneline -5
+
+# Stashed changes
+git stash list
+
+# Ahead/behind count
+git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null
 ```
 
 Report:
 - Current branch and tracking status
 - Working tree status (clean/dirty, staged/unstaged changes)
+- Stashed changes count (if any)
+- Commits ahead/behind remote
 - Last 5 commits
 
 ### 2. GitHub Repository Status
 
 ```bash
+# Repo info
 gh repo view --json name,owner,url,defaultBranchRef --jq '{name, owner: .owner.login, url, defaultBranch: .defaultBranchRef.name}'
+
+# Current branch's PR (if exists)
+gh pr view --json number,title,state,reviewDecision,statusCheckRollup --jq '{number, title, state, reviewDecision, checks: [.statusCheckRollup[]? | {name: .name, status: .status, conclusion: .conclusion}]}'
+
+# Open PRs (authored by current user)
+gh pr list --author @me --limit 10
+
+# All open PRs
 gh pr list --limit 10
+
+# Assigned issues
+gh issue list --assignee @me --limit 10
+
+# All open issues
 gh issue list --limit 10
 ```
 
 Report:
 - Repository name and owner
-- Open pull requests (number, title, branch, status)
-- Open issues (number, title)
+- Current branch's PR status (if exists):
+  - Review decision (approved, changes requested, review required)
+  - CI/CD check status (passing, failing, pending)
+- Your open PRs (number, title, branch)
+- All open PRs (number, title, branch)
+- Your assigned issues (number, title)
+- All open issues (number, title)
 
 ### 3. Branch Cleanup Check (Optional)
 
@@ -50,12 +80,21 @@ If there are merged branches that can be cleaned up, mention them.
 The background agent should compile results in this format:
 
 **Local Git:**
-- Branch: `branch-name` (up to date / ahead / behind)
-- Working tree: clean / X files modified
+- Branch: `branch-name`
+- Tracking: up to date / X commits ahead / X commits behind / X ahead, Y behind
+- Working tree: clean / X files modified (list them)
+- Stashes: X stashed changes (if any)
+
+**Current Branch PR:** (if exists)
+- PR #X: title
+- Review: approved / changes requested / review required / no reviews
+- Checks: passing / failing (list failures) / pending
 
 **GitHub (owner/repo):**
-- X open PRs
-- X open issues
+- Your open PRs: X
+- All open PRs: X
+- Your assigned issues: X
+- All open issues: X
 
 List the PRs and issues with their numbers and titles.
 
