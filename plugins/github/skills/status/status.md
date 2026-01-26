@@ -1,6 +1,6 @@
 ---
 description: Show local git and GitHub repository status
-allowed-tools: Bash, Task
+allowed-tools: Bash, Task, AskUserQuestion
 user-invocable: true
 ---
 
@@ -67,13 +67,23 @@ Report:
 - Your assigned issues (number, title)
 - All open issues (number, title)
 
-### 3. Branch Cleanup Check (Optional)
+### 3. Cleanup Check
 
 ```bash
+# Merged local branches
 git branch --merged main | grep -v '^\*' | grep -v 'main'
+
+# Stale remote tracking branches
+git remote prune origin --dry-run
+
+# Remote branches for merged PRs
+gh pr list --state merged --author @me --limit 10 --json headRefName --jq '.[].headRefName'
 ```
 
-If there are merged branches that can be cleaned up, mention them.
+Report any cleanup opportunities found:
+- Merged local branches that can be deleted
+- Stale remote tracking branches that can be pruned
+- Remote branches from your merged PRs that can be deleted
 
 ## Output Format
 
@@ -98,6 +108,12 @@ The background agent should compile results in this format:
 
 List the PRs and issues with their numbers and titles.
 
+**Cleanup Opportunities:**
+- Merged local branches
+- Stale remote tracking branches
+- Remote branches from merged PRs
+- Or state "None" if nothing to clean up
+
 ## Background Execution
 
 1. Launch the Task agent with `run_in_background: true` and `subagent_type: "Bash"`
@@ -115,3 +131,49 @@ Task tool with:
 ```
 
 Note: The `allowed_tools` parameter grants the background agent permission to run git and gh commands without prompting.
+
+## Cleanup Actions
+
+After displaying the status, if there are any cleanup opportunities, use the `AskUserQuestion` tool to offer them to the user.
+
+### Possible Cleanup Actions
+
+1. **Merged local branches**: Local branches that have been merged into main
+   - Command: `git branch -d <branch-name>`
+
+2. **Stale remote tracking branches**: Remote branches that no longer exist on the remote
+   - Detect with: `git remote prune origin --dry-run`
+   - Command: `git remote prune origin`
+
+3. **Remote branches from merged PRs**: Your remote branches that had PRs merged
+   - Command: `git push origin --delete <branch-name>`
+
+4. **Push uncommitted changes**: If working tree is dirty and changes are staged
+   - Suggest: commit and push
+
+5. **Pull from remote**: If branch is behind
+   - Command: `git pull`
+
+### Using AskUserQuestion
+
+Only show this if there are actionable items. Build options dynamically based on what was found:
+
+```
+AskUserQuestion with:
+  - header: "Actions"
+  - question: "Would you like to perform any of these actions?"
+  - multiSelect: true
+  - options: [dynamically built based on findings]
+```
+
+Example options:
+- `Delete merged branch 'feature/old-branch'` - "This branch has been merged into main"
+- `Prune stale remote branches` - "Remove local references to deleted remote branches"
+- `Delete remote branch 'feature/merged-pr'` - "This branch's PR was merged"
+- `Pull latest changes` - "Your branch is X commits behind remote"
+- `Push commits` - "You have X unpushed commits"
+- `Skip` - "Don't perform any actions" (required: AskUserQuestion needs at least 2 options)
+
+If the user selects actions, execute them and report the results.
+
+If there are no cleanup opportunities, do not ask - just end after showing the status.
