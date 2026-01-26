@@ -210,3 +210,33 @@ Example options:
 If the user selects actions, execute them and report the results.
 
 If there are no cleanup opportunities, do not ask - just end after showing the status.
+
+## Quick Actions
+
+After cleanup, offer quick actions if relevant:
+
+### Open Current PR in Browser
+If current branch has a PR:
+```bash
+gh pr view --web
+```
+
+### Switch to PR Branch
+If user wants to work on a different PR:
+```bash
+gh pr checkout <pr-number>
+```
+
+### Create PR for Current Branch
+If current branch has no PR and has unpushed commits:
+```bash
+gh pr create
+```
+
+Include these in the AskUserQuestion options when applicable.
+
+## No Actions Needed
+
+If there are no cleanup opportunities, no workflow issues, and no relevant quick actions, do not ask - just end after showing the status with a summary like:
+
+> "Everything looks good! No actions needed."
