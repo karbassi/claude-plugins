@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-01-25
+
+### Added
+
+- Enhanced `/github:status` with comprehensive status info
+  - Stashed changes count
+  - Ahead/behind commit tracking
+  - Current PR review status (approved, changes requested, pending)
+  - CI/CD check status with individual check names
+  - Separate "your PRs/issues" vs "all PRs/issues" views
+- Interactive cleanup actions via AskUserQuestion
+  - Delete merged local branches
+  - Prune stale remote tracking branches
+  - Delete remote branches from merged PRs
+  - Push/pull suggestions
+- Contextual workflow suggestions
+  - Dirty working tree warnings
+  - Behind/ahead remote notifications
+  - Failing CI check alerts
+  - PR review status prompts with `/github:fix-pr` suggestions
+- Quick actions
+  - Open current PR in browser
+  - Switch to different PR branch
+  - Create PR for current branch
+
+### Changed
+
+- `/github:status` now runs in the background for better UX
+
+## [1.2.0] - 2026-01-25
+
+### Added
+
+- `/github:status` skill for combined local git and GitHub status
+  - Shows current branch and working tree status
+  - Lists recent commits
+  - Shows open PRs and issues
+  - Suggests branch cleanup opportunities
+
 ## [1.1.3] - 2026-01-24
 
 ### Fixed
