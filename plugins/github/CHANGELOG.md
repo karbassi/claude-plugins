@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-01-25
+
+### Added
+
+- `/github:status` skill for combined local git and GitHub status
+  - Shows current branch and working tree status
+  - Lists recent commits
+  - Shows open PRs and issues
+  - Suggests branch cleanup opportunities
+
 ## [1.1.3] - 2026-01-24
 
 ### Fixed

@@ -1,7 +1,7 @@
 {
   "name": "github",
   "description": "Unified GitHub agent for issues, PRs, and code reviews",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "author": {
     "name": "Ali Karbassi"
   },
@@ -16,9 +16,11 @@
     "product-management"
   ],
   "skills": [
-    "./skills/fix-pr"
+    "./skills/fix-pr",
+    "./skills/status"
   ],
   "commands": [
-    "./skills/fix-pr/fix-pr.md"
+    "./skills/fix-pr/fix-pr.md",
+    "./skills/status/status.md"
   ]
 }
