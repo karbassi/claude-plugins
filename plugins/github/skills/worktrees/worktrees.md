@@ -31,26 +31,31 @@ ls -d worktrees 2>/dev/null      # Alternative
 ### 2. Check CLAUDE.md
 
 ```bash
-grep -i "worktree.*director" CLAUDE.md 2>/dev/null
+grep -i "worktree.*directory" CLAUDE.md 2>/dev/null
 ```
 
 **If preference specified:** Use it without asking.
 
 ### 3. Create Directory
 
-If no directory exists and no CLAUDE.md preference, create `.worktrees/` (preferred, hidden).
+If no directory exists and no CLAUDE.md preference, create `.worktrees/` (preferred, hidden):
+
+```bash
+mkdir -p .worktrees
+```
 
 ## Safety Verification
 
-**MUST verify directory is ignored before creating worktree:**
+**MUST verify selected directory is ignored before creating worktree:**
 
 ```bash
-git check-ignore -q .worktrees 2>/dev/null
+# Use the directory selected from the steps above (e.g., .worktrees, worktrees, or custom)
+git check-ignore -q "$WORKTREE_DIR" 2>/dev/null
 ```
 
 **If NOT ignored:**
 
-1. Add `.worktrees/` to .gitignore
+1. Add the selected directory to .gitignore (e.g., `echo "$WORKTREE_DIR/" >> .gitignore`)
 2. Commit the change
 3. Proceed with worktree creation
 
@@ -60,9 +65,16 @@ git check-ignore -q .worktrees 2>/dev/null
 
 ### 1. Create Worktree
 
+The path name (directory inside worktree folder) and branch name can differ:
+- **Path name**: Short, descriptive folder name (e.g., `auth`, `fix-login`)
+- **Branch name**: Full branch name following project conventions (e.g., `feature/auth`, `fix/login-bug`)
+
 ```bash
-git worktree add ".worktrees/$BRANCH_NAME" -b "$BRANCH_NAME"
-cd ".worktrees/$BRANCH_NAME"
+# $WORKTREE_DIR is the selected directory (e.g., .worktrees)
+# $PATH_NAME is the folder name (e.g., auth)
+# $BRANCH_NAME is the git branch (e.g., feature/auth)
+git worktree add "$WORKTREE_DIR/$PATH_NAME" -b "$BRANCH_NAME"
+cd "$WORKTREE_DIR/$PATH_NAME"
 ```
 
 ### 2. Install Dependencies
@@ -72,7 +84,7 @@ cd ".worktrees/$BRANCH_NAME"
 ### 3. Report
 
 ```
-Worktree ready at .worktrees/$BRANCH_NAME
+Worktree ready at $WORKTREE_DIR/$PATH_NAME (branch: $BRANCH_NAME)
 ```
 
 ## Quick Reference
@@ -107,7 +119,7 @@ You: I'm setting up an isolated git worktree workspace.
 [Create worktree: git worktree add .worktrees/auth -b feature/auth]
 [Detect package.json - run npm install]
 
-Worktree ready at .worktrees/auth
+Worktree ready at .worktrees/auth (branch: feature/auth)
 ```
 
 ## Red Flags
