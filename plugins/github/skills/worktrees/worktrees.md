@@ -65,9 +65,9 @@ git worktree add ".worktrees/$BRANCH_NAME" -b "$BRANCH_NAME"
 cd ".worktrees/$BRANCH_NAME"
 ```
 
-### 2. Run Project Setup (if needed)
+### 2. Install Dependencies
 
-If the project requires setup (e.g., dependencies not shared), run appropriate setup commands.
+**MUST install dependencies.** Worktrees share the git repo but NOT installed dependencies. Detect the project type and run the appropriate package manager.
 
 ### 3. Report
 
@@ -105,6 +105,7 @@ You: I'm setting up an isolated git worktree workspace.
 [Check .worktrees/ - exists]
 [Verify ignored - git check-ignore confirms .worktrees/ is ignored]
 [Create worktree: git worktree add .worktrees/auth -b feature/auth]
+[Detect package.json - run npm install]
 
 Worktree ready at .worktrees/auth
 ```
