@@ -17,10 +17,12 @@
   ],
   "skills": [
     "./skills/fix-pr",
-    "./skills/status"
+    "./skills/status",
+    "./skills/worktrees"
   ],
   "commands": [
     "./skills/fix-pr/fix-pr.md",
-    "./skills/status/status.md"
+    "./skills/status/status.md",
+    "./skills/worktrees/worktrees.md"
   ]
 }
