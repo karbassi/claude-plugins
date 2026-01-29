@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `/github:worktrees` skill for creating isolated git worktrees
+  - Smart directory selection (existing > CLAUDE.md preference > create `.worktrees/`)
+  - Safety verification ensures worktree directory is gitignored
+  - Handles both new and existing branches
+  - Explicit dependency installation step
+- `github:ops` agent now supports "work on #X" workflow
+  - Creates worktree with branch `issue-<number>-<slug>`
+  - Fetches issue details and summarizes task
+  - Installs dependencies automatically
+
 ## [1.3.0] - 2026-01-25
 
 ### Added
