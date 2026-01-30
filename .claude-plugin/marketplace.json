@@ -33,6 +33,10 @@
     {
       "name": "youtube-transcript",
       "source": "./plugins/youtube-transcript"
+    },
+    {
+      "name": "kickstart",
+      "source": "./plugins/kickstart"
     }
   ]
 }

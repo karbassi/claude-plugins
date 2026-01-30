@@ -1,0 +1,9 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/gh/anthropics/claude-code@main/.schemas/plugin.schema.json",
+  "name": "kickstart",
+  "description": "Initialize new projects with a consistent structure - creates CLAUDE.md, TODO.md, CHANGELOG.md, README.md, docs folder, and .gitignore",
+  "version": "1.1.0",
+  "author": "karbassi",
+  "license": "MIT",
+  "keywords": ["init", "scaffold", "project", "setup", "bootstrap"]
+}
