@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `/github:worktrees` skill for creating isolated git worktrees
+  - Based on [obra/superpowers](https://github.com/obra/superpowers) using-git-worktrees skill
+  - Smart directory selection (existing > CLAUDE.md > ask user)
+  - Safety verification ensures worktree directory is gitignored
+  - Auto-detects project type and installs dependencies
+  - Runs baseline tests before reporting ready
+- `github:ops` agent now supports "work on #X" workflow
+  - Delegates to `/github:worktrees` skill for worktree creation
+
 ## [1.3.0] - 2026-01-25
 
 ### Added
