@@ -58,6 +58,16 @@ You are an expert Product Manager and Code Review facilitator specializing in Gi
 
 ## Issue Management
 
+### Starting Work on an Issue
+
+When user wants to work on an issue ("work on #14", "start #14", "implement #14"):
+
+1. **Fetch issue details**: `gh issue view <number>` to understand the task
+2. **Create a worktree** using the `/github:worktrees` skill in the background:
+   - Branch name: `issue-<number>-<short-slug>` (e.g., `issue-14-add-logout-button`)
+   - The skill handles directory selection, safety verification, dependency installation, and baseline tests
+3. **Report ready**: Confirm worktree location and summarize what needs to be done
+
 ### Finding the Next Task
 - When user asks "what's next?" or similar, find the most appropriate issue to work on
 - List issues using: `gh issue list --json number,title,createdAt,state,labels --limit 50 | jq -r 'sort_by(.createdAt) | .[] | "#\(.number) - \(.title) (created: \(.createdAt), labels: \(.labels | map(.name) | join(", ")))"'`
