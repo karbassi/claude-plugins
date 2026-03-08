@@ -221,6 +221,23 @@ mutation($threadId: ID!, $body: String!) {
 }' -f threadId='PRRT_...' -f body='Fixed in latest commit'
 ```
 
+## After All Comments Are Addressed
+
+Once all review threads and PR comments have been processed and pushed:
+
+### Re-request reviews from automated reviewers
+
+Check if `copilot-pull-request-reviewer` (GitHub Copilot) was a reviewer on the PR. If so, re-request their review so they re-evaluate the updated code:
+
+```bash
+# Check if Copilot was a reviewer
+COPILOT_REVIEWED=$(gh api repos/$OWNER/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.user.login == "copilot-pull-request-reviewer")] | length')
+
+if [ "$COPILOT_REVIEWED" -gt 0 ]; then
+  gh pr edit $PR_NUMBER --repo $OWNER/$REPO --add-reviewer copilot-pull-request-reviewer
+fi
+```
+
 ## Guidelines
 
 - Fetch both review threads AND general PR comments
