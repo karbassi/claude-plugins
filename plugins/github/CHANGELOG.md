@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-03-08
+
+### Added
+
+- Auto re-request Copilot review in `/github:fix-pr` after all fixes are pushed
+  - Checks if `copilot-pull-request-reviewer` was a reviewer on the PR
+  - Re-requests their review via `gh pr edit --add-reviewer` so they re-evaluate updated code
+
 ## [1.4.0] - 2026-02-01
 
 ### Added
