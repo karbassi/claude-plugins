@@ -1,44 +1,33 @@
 ---
-description: Update CHANGELOG.md with recent changes following Keep a Changelog format
+name: "update"
+description: "Gather recent git commits, categorize user-facing changes, and update CHANGELOG.md following Keep a Changelog format with commit SHA references. Use when preparing a release, before creating a PR, or after completing a feature or bug fix."
 user-invocable: true
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write
 ---
 
-Update the project's CHANGELOG.md with recent changes, following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format.
+# Changelog Update
 
-## When to Use
+Update the project's CHANGELOG.md with recent changes following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format.
 
-- Before creating a PR
-- After completing a feature or fix
-- When preparing a release
+## Workflow
 
-## Process
+### Step 1: Gather Recent Changes
 
-1. **Gather recent changes**
-   ```bash
-   # Get commits since last tag or recent commits
-   git log --oneline $(git describe --tags --abbrev=0 2>/dev/null || echo HEAD~10)..HEAD
-   ```
+```bash
+git log --oneline $(git describe --tags --abbrev=0 2>/dev/null || echo HEAD~10)..HEAD
+```
 
-2. **Analyze each commit**
-   - Determine if it's user-facing (skip internal refactors, CI changes, etc.)
-   - Categorize: Added, Changed, Deprecated, Removed, Fixed, Security
+### Step 2: Analyze and Categorize
 
-3. **Read existing CHANGELOG.md**
-   - Check for existing [Unreleased] section
-   - Understand current format and style
+For each commit, determine if it's user-facing (skip internal refactors, CI, formatting). Categorize into: Added, Changed, Deprecated, Removed, Fixed, Security.
 
-4. **Update the changelog**
-   - Add entries under [Unreleased] section
-   - Include commit SHA reference
-   - Link to PR/issue if available
-   - Use present tense, imperative mood
+### Step 3: Read Existing CHANGELOG.md
 
-5. **Verify the update**
-   - Ensure proper formatting
-   - No duplicate entries
+Check for an existing `[Unreleased]` section and match the current format and style.
 
-## Entry Format
+### Step 4: Update the Changelog
+
+Add entries under `[Unreleased]` using present tense, imperative mood. Include commit SHA references and PR/issue links where available.
 
 ```markdown
 ## [Unreleased]
@@ -53,59 +42,41 @@ Update the project's CHANGELOG.md with recent changes, following [Keep a Changel
 - Bug fix description (def5678, fixes #456)
 ```
 
-Note: Use short commit SHAs (7 chars). GitHub auto-links #123 to issues/PRs.
+Use short commit SHAs (7 chars). GitHub auto-links `#123` to issues/PRs.
+
+### Step 5: Verify
+
+Ensure proper formatting and no duplicate entries.
 
 ## Categories (Keep a Changelog)
 
-- **Added** - New features
-- **Changed** - Changes in existing functionality
-- **Deprecated** - Soon-to-be removed features
-- **Removed** - Removed features
-- **Fixed** - Bug fixes
-- **Security** - Vulnerability fixes
+| Category | Use For |
+|----------|---------|
+| **Added** | New features |
+| **Changed** | Changes in existing functionality |
+| **Deprecated** | Soon-to-be removed features |
+| **Removed** | Removed features |
+| **Fixed** | Bug fixes |
+| **Security** | Vulnerability fixes |
 
-## What to Include
+## Inclusion Criteria
 
-- New features users can use
-- Breaking changes
-- Bug fixes affecting users
-- Security patches
-- Deprecation notices
+**Include:** New user-facing features, breaking changes, bug fixes affecting users, security patches, deprecation notices.
 
-## What to Exclude
-
-- Internal refactoring (no user impact)
-- CI/CD changes
-- Documentation-only updates (unless significant)
-- Dependency bumps (unless security-related)
-- Code style/formatting changes
+**Exclude:** Internal refactoring, CI/CD changes, documentation-only updates (unless significant), non-security dependency bumps, code style/formatting.
 
 ## Release Workflow
 
-When releasing a version:
+When releasing a version, update the version header, add a new `[Unreleased]` section above, and update comparison links:
 
-1. **Update version header**
-   ```markdown
-   ## [1.2.0] - 2026-01-24
-   ```
-
-2. **Add new [Unreleased] section**
-   ```markdown
-   ## [Unreleased]
-
-   ## [1.2.0] - 2026-01-24
-   ```
-
-3. **Update comparison links** (if used)
-   ```markdown
-   [Unreleased]: https://github.com/user/repo/compare/v1.2.0...HEAD
-   [1.2.0]: https://github.com/user/repo/compare/v1.1.0...v1.2.0
-   ```
+```markdown
+[Unreleased]: https://github.com/user/repo/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/user/repo/compare/v1.1.0...v1.2.0
+```
 
 ## Guidelines
 
-- Never commit directly to main - work on feature branches
 - One changelog entry per logical change (not per commit)
 - Be concise but descriptive
-- Use consistent formatting with existing entries
+- Match formatting with existing entries
 - Include migration notes for breaking changes

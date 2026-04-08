@@ -1,5 +1,6 @@
 ---
-description: Show local git and GitHub repository status
+name: "status"
+description: "Display combined local git and GitHub remote status including branch tracking, working tree changes, open PRs, issues, and CI check results, then offer cleanup actions and contextual suggestions. Use when checking repository status, reviewing open PRs, or finding cleanup opportunities."
 allowed-tools: Bash, Task, AskUserQuestion
 user-invocable: true
 ---

@@ -1,5 +1,6 @@
 ---
-description: Address PR review feedback by fixing issues and resolving comment threads
+name: "fix-pr"
+description: "Fetch unresolved PR review threads and general comments, evaluate feedback, apply fixes, reply with commit SHAs, and resolve threads using the GitHub GraphQL API. Use when addressing code review feedback, fixing PR comments, or resolving review threads on a pull request."
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, AskUserQuestion
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: Create isolated git worktrees for feature work with smart directory selection and safety verification
+name: "worktrees"
+description: "Create isolated git worktrees for parallel feature development by selecting an appropriate directory, verifying gitignore safety, running project setup, and confirming a clean test baseline. Use when setting up a worktree, working on multiple branches simultaneously, or creating an isolated workspace."
 allowed-tools: Bash, AskUserQuestion
 user-invocable: true
 ---
