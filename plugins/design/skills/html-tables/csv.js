@@ -1,8 +1,13 @@
 // CSV export: <button type="button" data-csv="table-id" data-filename="name.csv">Download CSV</button>
 // Exports the rows in their current (sorted) order. Uses data-v where present, so
 // numbers stay raw. Skips empty and error rows. Neutralizes cells that a spreadsheet would run as formulas.
+const text = (cell) => {
+  const copy = cell.cloneNode(true); // textContent ignores CSS text-transform; <br> becomes a space
+  copy.querySelectorAll("br").forEach((br) => br.replaceWith(" "));
+  return copy.textContent;
+};
 const field = (cell) => {
-  let s = (cell.dataset.v ?? cell.innerText).replace(/\s+/g, " ").trim();
+  let s = (cell.dataset.v ?? text(cell)).replace(/\s+/g, " ").trim();
   if (/^[=+@]|^-(?!\d)/.test(s)) s = `'${s}`;
   return `"${s.replace(/"/g, '""')}"`;
 };
