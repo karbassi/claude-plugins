@@ -15,12 +15,15 @@ Audit the files in `$ARGUMENTS` against the rules in the sibling skills, and rep
 1. **Resolve the targets.** Expand globs with Glob. If `$ARGUMENTS` is empty, ask with AskUserQuestion which file to review. Review only `.html`, `.svelte` and `.css` files. For a Svelte component, also read the global stylesheet it relies on, if one is obvious (`app.css`, `+layout.svelte`).
 2. **Load the rules.** Read `../html-tables/html-tables.md`, `../motion/motion.md` and `../color/color.md`, relative to this skill's folder. Those files are the checklist. Don't audit from memory.
 3. **Read each target in full**, with line numbers, and check it against the sections below.
-4. **Check contrast by computing it.** Resolve each foreground/background token pair actually used for text, in both themes, and run `node ../color/contrast.js <fg> <bg>` from this skill's folder. Report the measured ratio. Never estimate it.
+4. **Check contrast by computing it.** Resolve each foreground/background pair actually used for text, in both themes, and run `node ../color/contrast.js <fg> <bg>` from this skill's folder. Report the measured ratio. Never estimate it.
+   - The script takes `#rgb`, `#rrggbb` and `rgb()`. Resolve anything else first: follow `var()` to its token, split `light-dark(a, b)` into a light pair and a dark pair, and convert named colors to hex using the CSS named-color list (`red` is `#ff0000`, `green` is `#008000`). If the script exits non-zero, fix the input. Never report a `NaN`.
+   - With no background set anywhere up the tree, measure against `#ffffff`.
+   - A page counts as having a dark theme if it uses `light-dark()` with `color-scheme`, a `prefers-color-scheme: dark` block, or a `[data-theme="dark"]` override. Without one, measure the light theme only and report the missing dark theme as its own finding.
 5. **Report**, in the format below.
 
 ## Checklist
 
-Skip any section that doesn't apply (there's no table, no animation). Say that you skipped it.
+Skip any section or bullet that doesn't apply (there's no table, no animation, no footnotes). List what you skipped, and why, at the end.
 
 **Tables** (for each `<table>` of data):
 
@@ -47,12 +50,12 @@ Skip any section that doesn't apply (there's no table, no animation). Say that y
 
 - Any text pair under 4.5:1 (3:1 for large text), or any UI part or meaningful graphic under 3:1, in either theme
 - Hex or rgb values outside the token block; no dark theme; no explicit `body` background
-- Color as the only cue; legends that name colors instead of meanings; one color meaning two things
+- Color as the only cue: a colored value with no legend, and no word, number or symbol that carries the same meaning; legends that name colors instead of meanings; one color meaning two things
 - Chart legends in a box when direct labels would fit
 
 ## Report format
 
-Group the findings by severity, most severe first. Give one line per finding, and anchor each one to the most specific line:
+Group the findings by severity, most severe first. Give one line per finding, and anchor each one to the most specific line. When one rule is broken in many places, write one finding anchored to the first instance and list the other lines ("also 16–25"). The tally counts findings, not instances. Suggested fixes name real classes and tokens from the sibling skills (`--ink`, `td.b`, `.acct`). Never invent new names.
 
 ```
 ## High
@@ -65,8 +68,10 @@ Group the findings by severity, most severe first. Give one line per finding, an
 - path/to/page.html:130: "$" repeated in every Cost cell (tables: accounting format). Use .acct.
 ```
 
-- **High:** content can go missing or can't be used: gated visibility, contrast failures on body text, an unsortable large table, color as the only cue.
+- **High:** content can go missing or can't be used: gated visibility, any text below its contrast minimum (prose, table cells or labels), an unsortable large table, color as the only cue.
 - **Medium:** the rule is clearly broken but the page still works.
 - **Low:** polish.
+
+When the fix for a High finding would also remove lower findings on the same code (deleting a gated animation fixes its duration and easing), report the High finding and fold the others into its fix text instead of listing them separately.
 
 End with a one-line tally ("3 high, 5 medium, 2 low across 1 file") and the sections you skipped. If nothing breaks a rule, say so plainly. Don't pad the report.
