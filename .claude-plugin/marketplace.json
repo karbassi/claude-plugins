@@ -33,6 +33,10 @@
     {
       "name": "youtube-transcript",
       "source": "./plugins/youtube-transcript"
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design"
     }
   ]
 }
