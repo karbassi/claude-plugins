@@ -8,6 +8,8 @@ user-invocable: true
 
 Every data table on a page follows these rules. The reference code sits next to this file: `table.css`, `sort.js` and `csv.js`. It expects the color tokens from the `design:color` skill (`../color/tokens.css`).
 
+These rules cover the table itself. For the page around it, apply `design:color` (text color, theme, contrast) and `design:motion` (no content gated behind an animation) too.
+
 ## Rules
 
 ### Structure
@@ -15,7 +17,8 @@ Every data table on a page follows these rules. The reference code sits next to 
 - Put every table in a scroll wrapper, `<div class="table-wrap">`, with `overflow: auto` and a `max-height` of about 75vh.
 - Put the border radius and border on the wrapper, never on the table. `overflow: hidden` on a table breaks sticky headers.
 - Make the headers sticky: `thead th { position: sticky; top: 0 }`, with a solid background so rows don't show through.
-- Freeze the first column on wide tables (`<table class="freeze">`) so the row label stays visible while scrolling sideways.
+- Freeze the first column on wide tables (`<table class="freeze">`) so the row label stays visible while scrolling sideways. A table counts as wide when it has more than 6 columns, or when it scrolls sideways at 375px.
+- `freeze` pins whatever column comes first, so put the row label first. If there's a rank, show it inside the label cell (`<td data-v="Atlas"><span class="rank">1</span> Atlas</td>`) or after it, or skip freezing.
 - Use `scope="col"` on column headers.
 
 ### Narrow screens
@@ -27,13 +30,13 @@ Every data table on a page follows these rules. The reference code sits next to 
 ### Numbers
 
 - Right-align numbers, and set `font-variant-numeric: tabular-nums` on both the `th` and the `td` (`class="num"` on both).
-- Put footnote marks (`*`, `†`) in a fixed-width slot (`<span class="mk">*</span>`), and put an empty slot on unmarked rows too, so the digits stay in line.
+- Put footnote marks (`*`, `†`) in a fixed-width slot (`<span class="mk">*</span>`). If any cell in a column has a mark, every cell in that column gets the slot, empty on the unmarked rows, so the digits stay in line. Columns with no marks need no slot.
 - Show zero differently from missing. A real zero is `0`. A missing or not-applicable value is an em dash in `td.none` with `data-v=""`, so it sorts last.
 
 ### No repeating values
 
 - If every row repeats the same value (the `/42` in `3/42`, a unit, a currency code), move it into the header and show only the part that varies: "Missed · of 42", "p50 · s".
-- Put the header's unit on a second line: `Missed<br><span class="u">of 42</span>`.
+- Put the header's unit on a second line: `Missed<br><span class="u">of 42</span>`, or `Cost<br><span class="u">USD</span>` for a currency code.
 
 ### Currency
 
@@ -43,8 +46,10 @@ Every data table on a page follows these rules. The reference code sits next to 
 ### Color
 
 - Pick a meaning, show a legend above the table, and use the meaning consistently. The default is green = what we want, amber = caveat, red = disqualifying, neutral otherwise.
+- When a threshold decides the color, the legend states the threshold ("0 missed", "1–3", "4 or more").
+- Use the same three words everywhere: legend, dot labels and prose. The defaults are Wanted, Caveat and Disqualifying.
 - Tint only the cells that need attention (`td.w`, `td.b`). Good values get colored text only (`td.g`).
-- Give each row a verdict dot (`<span class="dot b" role="img" aria-label="Disqualified" title="Disqualified"></span>`) when the row has an overall verdict. Color is never the only cue.
+- Give each row a verdict dot (`<span class="dot b" role="img" aria-label="Disqualifying" title="Disqualifying"></span>`) when the row has an overall verdict. Color is never the only cue.
 - Keep gridlines faint: row dividers in `--line`, no vertical rules, no zebra striping by default.
 
 ### Sorting
@@ -60,12 +65,12 @@ Every data table on a page follows these rules. The reference code sits next to 
 ### States and export
 
 - A table with no rows says so in one full-width row: `<tr class="state"><td colspan="6">No results for this filter.</td></tr>`. A failed load uses `tr.state.error` and says what failed. Never show an empty table body.
-- Add a "Download CSV" button to big tables (more than about 25 rows, or ones people will want in a spreadsheet): `<button type="button" data-csv="table-id">Download CSV</button>` plus `csv.js`. It exports the current sort order, using raw `data-v` values.
+- Add a "Download CSV" button to tables with more than 25 rows, or when the user asks for one: `<button type="button" data-csv="table-id">Download CSV</button>` plus `csv.js`. It exports the current sort order, using raw `data-v` values.
 
 ## Minimal example
 
 ```html
-<p class="legend"><span class="sw g">Wanted</span> <span class="sw w">Caveat</span> <span class="sw b">Disqualifying</span></p>
+<p class="legend"><span class="sw g">Wanted · 0 missed</span> <span class="sw w">Caveat · 1–3</span> <span class="sw b">Disqualifying · 4 or more</span></p>
 <div class="table-wrap">
   <table class="sortable freeze" id="plans">
     <thead><tr>
@@ -75,12 +80,12 @@ Every data table on a page follows these rules. The reference code sits next to 
     </tr></thead>
     <tbody>
       <tr>
-        <td data-v="Basic"><span class="dot g" role="img" aria-label="Recommended" title="Recommended"></span>Basic</td>
+        <td data-v="Basic"><span class="dot g" role="img" aria-label="Wanted" title="Wanted"></span>Basic</td>
         <td class="num g" data-v="0">0</td>
-        <td class="money" data-v="1250"><span class="acct"><span>$</span><span>1,250.00<span class="mk"></span></span></span></td>
+        <td class="money" data-v="1250"><span class="acct"><span>$</span><span>1,250.00</span></span></td>
       </tr>
       <tr>
-        <td data-v="Plus"><span class="dot b" role="img" aria-label="Disqualified" title="Disqualified"></span>Plus</td>
+        <td data-v="Plus"><span class="dot b" role="img" aria-label="Disqualifying" title="Disqualifying"></span>Plus</td>
         <td class="num b" data-v="7">7</td>
         <td class="money none" data-v="">—</td>
       </tr>

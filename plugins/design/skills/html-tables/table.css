@@ -33,6 +33,7 @@ table.freeze thead th:first-child { z-index: 3; background: var(--head); }
 .num, .money { text-align: right; font-variant-numeric: tabular-nums; }
 td.num, td.money { white-space: nowrap; }
 td.money { min-width: 7.5em; }
+th.money { width: 8em; } /* keep spare width out of the money column, so $ stays near the amount */
 .mk { display: inline-block; width: 0.7em; text-align: left; } /* footnote slot: * † */
 
 /* Accounting currency: $ flush left, amount flush right. */
