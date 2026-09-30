@@ -1,7 +1,7 @@
 // WCAG 2.x contrast ratio between two colors.
 // Usage: node contrast.js "#8a5a00" "#fbf0d9"  → 5.24
-// Accepts #rgb, #rrggbb and rgb(r, g, b). Resolve named colors, var() and
-// light-dark() to one of these first; anything else exits with an error.
+// Accepts #rgb, #rrggbb and opaque rgb(r, g, b). Resolve named colors, var(),
+// light-dark() and rgba() (flatten alpha onto the background) first; anything else exits with an error.
 // AA: 4.5 for body text, 3 for large text (24px, or 18.66px bold), 3 for UI and graphics.
 const parse = (color = "") => {
   const s = color.trim().toLowerCase();
@@ -10,8 +10,9 @@ const parse = (color = "") => {
     const hex = m[1].length === 3 ? [...m[1]].map((c) => c + c).join("") : m[1];
     return hex.match(/../g).map((h) => parseInt(h, 16));
   }
-  m = s.match(/^rgba?\(\s*(\d+)[\s,]+(\d+)[\s,]+(\d+)/);
-  if (m) return m.slice(1, 4).map(Number);
+  // Opaque rgb() only: alpha would change the effective color, so rgba() and "/ a" are rejected.
+  m = s.match(/^rgb\(\s*(\d{1,3})(?:\s*,\s*|\s+)(\d{1,3})(?:\s*,\s*|\s+)(\d{1,3})\s*\)$/);
+  if (m && m.slice(1, 4).every((v) => v <= 255)) return m.slice(1, 4).map(Number);
   throw new Error(`contrast.js: can't parse "${color}"; use #rgb, #rrggbb or rgb()`);
 };
 const lum = (color) => {
