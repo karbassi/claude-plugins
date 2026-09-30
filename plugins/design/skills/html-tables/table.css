@@ -54,7 +54,7 @@ td:has(> .dot) { white-space: nowrap; } /* keep the dot on its label's line */
 
 /* Legend above the table, using the same meanings as the cells. */
 .legend { font-size: 0.82rem; color: var(--muted); margin: 8px 0 4px; }
-.sw { padding: 0 5px; border-radius: 4px; font-weight: 600; }
+.sw { display: inline-block; padding: 0 5px; border-radius: 4px; font-weight: 600; }
 .sw.g { color: var(--good); }
 .sw.w { color: var(--warn); background: var(--warn-bg); }
 .sw.b { color: var(--bad); background: var(--bad-bg); }
