@@ -2,7 +2,7 @@
 name: review
 description: Audit an HTML page or Svelte component against the design plugin's table, motion and color rules, and report the findings as file:line. Read-only; it never edits. Use when asked to review, audit or check a page's design, tables, motion or colors.
 argument-hint: <file or glob> [more files]
-allowed-tools: Read, Grep, Glob, Bash(node:*)
+allowed-tools: Read, Grep, Glob, Bash(node:*), AskUserQuestion
 user-invocable: true
 ---
 
