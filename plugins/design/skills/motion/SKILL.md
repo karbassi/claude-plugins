@@ -8,7 +8,7 @@ user-invocable: true
 
 Motion is feedback and orientation, never decoration and never a gate. When in doubt, leave it out: a hard cut is always acceptable.
 
-The snippet `motion.css` sits next to this file and holds the tokens, the reduced-motion rule and the button press.
+The snippet `${CLAUDE_PLUGIN_ROOT}/skills/motion/motion.css` holds the tokens, the reduced-motion rule and the button press.
 
 ## Rules
 

@@ -29,7 +29,7 @@ Color carries meaning on these pages. Decide what each color means before you us
 - Large text (24px, or 18.66px bold): at least **3:1**.
 - UI parts and meaningful graphics (verdict dots, chart lines, input borders, focus rings): at least **3:1** against what's next to them.
 - Purely decorative lines, like gridlines and card edges, are exempt. That's what lets gridlines stay faint.
-- Check every text/background pair in **both** themes, including text on tints (`--warn` on `--warn-bg`) and on header backgrounds (`--good` on `--head`). Run `node contrast.js <fg> <bg>` from this skill's folder.
+- Check every text/background pair in **both** themes, including text on tints (`--warn` on `--warn-bg`) and on header backgrounds (`--good` on `--head`). Run `node "${CLAUDE_PLUGIN_ROOT}/skills/color/contrast.js" <fg> <bg>`.
 
 ### Themes
 
@@ -48,7 +48,7 @@ Color carries meaning on these pages. Decide what each color means before you us
 
 ## Snippets
 
-`tokens.css` (in this folder) is the token block. Paste it first, before any other page CSS. `html-tables/table.css` expects these names. The lowest-contrast text pairs in it are light `--good` on `--head` at 4.62, and light `--good` on `--good-bg` at 4.66. Re-check with `contrast.js` if you change any value.
+`${CLAUDE_PLUGIN_ROOT}/skills/color/tokens.css` is the token block. Paste it first, before any other page CSS. `html-tables/table.css` expects these names. The lowest-contrast text pairs in it are light `--good` on `--head` at 4.62, and light `--good` on `--good-bg` at 4.66. Re-check with `contrast.js` if you change any value.
 
 A legend that reuses the data's classes:
 

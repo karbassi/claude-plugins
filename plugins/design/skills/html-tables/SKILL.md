@@ -6,7 +6,7 @@ user-invocable: true
 
 # HTML tables
 
-Every data table on a page follows these rules. The reference code sits next to this file: `table.css`, `sort.js` and `csv.js`. It expects the color tokens from the `design:color` skill (`../color/tokens.css`).
+Every data table on a page follows these rules. The reference code is in `${CLAUDE_PLUGIN_ROOT}/skills/html-tables/`: `table.css`, `sort.js` and `csv.js`. It expects the color tokens from the `design:color` skill (`${CLAUDE_PLUGIN_ROOT}/skills/color/tokens.css`).
 
 These rules cover the table itself. For the page around it, apply `design:color` (text color, theme, contrast) and `design:motion` (no content gated behind an animation) too.
 
