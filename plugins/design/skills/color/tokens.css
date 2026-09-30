@@ -21,6 +21,6 @@
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"]  { color-scheme: dark; }
-@media print { :root { color-scheme: light; } }
+@media print { :root, :root[data-theme] { color-scheme: light; } } /* [data-theme] matches the overrides above, so print wins */
 
 body { background: var(--bg); color: var(--ink); }
