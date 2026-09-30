@@ -13,7 +13,7 @@ Everything is plain instructions plus small copy-paste CSS and JS snippets. Ther
 | `/design:color` | Choosing colors, legends, or light and dark themes, or checking contrast |
 | `/design:review <file>` | Auditing an HTML or Svelte file against all of the above. Reports `file:line` findings and never edits |
 
-Claude also loads the first three on its own when a task matches their description.
+Claude also loads any of the four on its own when a task matches its description, so asking it to "check this page's tables" runs `review` without the slash command.
 
 ### Snippets
 
