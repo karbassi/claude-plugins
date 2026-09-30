@@ -1,0 +1,26 @@
+/* Color tokens: light and dark in one place.
+   The OS setting picks the theme; data-theme="light|dark" on <html> overrides it.
+   Every pair below passes WCAG 2.2 AA (the color skill's SKILL.md lists the lowest pairs). */
+:root {
+  color-scheme: light dark;
+  --bg:      light-dark(#fbfaf7, #151514);
+  --surface: light-dark(#ffffff, #1d1d1b);
+  --head:    light-dark(#f1efe9, #262523); /* table headers, code */
+  --ink:     light-dark(#1d1d1b, #ecebe6);
+  --muted:   light-dark(#5f5d57, #a6a39b);
+  --line:    light-dark(#e4e1d9, #34332f); /* decorative only: gridlines, card edges */
+  --accent:  light-dark(#2f5bd3, #8aa8ff); /* links and focus, never a verdict */
+
+  /* Semantic: good = what we want, warn = caveat, bad = disqualifying. */
+  --good:    light-dark(#1f7a4d, #6fd09d);
+  --warn:    light-dark(#8a5a00, #f0c46a);
+  --bad:     light-dark(#b3372b, #ff8f80);
+  --good-bg: light-dark(#e6f3ec, #173326);
+  --warn-bg: light-dark(#fbf0d9, #3a2e14);
+  --bad-bg:  light-dark(#f8e7e4, #3a1c18);
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+@media print { :root, :root[data-theme] { color-scheme: light; } } /* [data-theme] matches the overrides above, so print wins */
+
+body { background: var(--bg); color: var(--ink); }

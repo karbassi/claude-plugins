@@ -1,0 +1,36 @@
+/* Motion tokens and the two global rules every page gets. */
+:root {
+  --dur-in: 200ms;          /* entrances; keep everything under 300ms */
+  --dur-out: 120ms;         /* exits run ~40% faster */
+  --dur-press: 100ms;
+  --stagger: 50ms;          /* per list item */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* entrances and feedback */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);      /* exits */
+}
+
+/* Reduced motion: near-zero durations, not "none", so end states and
+   animationend/transitionend events still happen. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Press feedback on buttons. */
+button, .button { transition: transform var(--dur-press) var(--ease-out); }
+button:active:not(:disabled), .button:active { transform: scale(0.97); }
+
+/* Entrance for UI that appears on a user action (menu, popover, toast).
+   Never use this on page content: content is visible without any animation. */
+.pop-in { animation: pop-in var(--dur-in) var(--ease-out); }
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.96); }
+}

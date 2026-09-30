@@ -1,0 +1,26 @@
+{
+  "name": "design",
+  "description": "Design rules for hand-written HTML pages: data tables, motion, color, and a read-only design review",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ali Karbassi"
+  },
+  "homepage": "https://github.com/karbassi/claude-plugins/tree/main/plugins/design",
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "html",
+    "css",
+    "tables",
+    "motion",
+    "color",
+    "accessibility"
+  ],
+  "skills": [
+    "./skills/html-tables",
+    "./skills/motion",
+    "./skills/color",
+    "./skills/review"
+  ]
+}

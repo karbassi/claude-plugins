@@ -50,6 +50,7 @@ claude plugin install github@karbassi-claude-plugins --scope local
 | [changelog-manager](./plugins/changelog-manager/) | Maintain CHANGELOG.md following Keep a Changelog format |
 | [note-taker](./plugins/note-taker/) | Background note-taker that captures decisions, action items, blockers, and key findings |
 | [git-agent](./plugins/git-agent/) | Subagent that handles git operations (commit, stage, etc.) |
+| [design](./plugins/design/) | Design rules for HTML pages: tables, motion, color, and a read-only review |
 | [docs-update](./plugins/docs-update/) | Subagent that updates project documentation files |
 | [todo-update](./plugins/todo-update/) | Subagent that keeps TODO.md current with task status |
 | [browser-research](./plugins/browser-research/) | Subagent for browser automation and web research |
@@ -64,6 +65,7 @@ claude-plugins/
 │   └── marketplace.json    # Plugin registry
 ├── plugins/
 │   ├── changelog-manager/  # Changelog maintenance
+│   ├── design/             # HTML design rules
 │   ├── note-taker/         # Background note-taking
 │   ├── git-agent/          # Git operations
 │   ├── docs-update/        # Documentation updates
