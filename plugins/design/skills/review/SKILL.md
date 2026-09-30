@@ -2,7 +2,7 @@
 name: review
 description: Audit an HTML page or Svelte component against the design plugin's table, motion and color rules, and report the findings as file:line. Read-only; it never edits. Use when asked to review, audit or check a page's design, tables, motion or colors.
 argument-hint: <file or glob> [more files]
-allowed-tools: Read, Grep, Glob, Bash(node:*), AskUserQuestion
+allowed-tools: Read, Grep, Glob, AskUserQuestion
 user-invocable: true
 ---
 
@@ -15,7 +15,7 @@ Audit the files in `$ARGUMENTS` against the rules in the sibling skills, and rep
 1. **Resolve the targets.** Expand globs with Glob. If `$ARGUMENTS` is empty, ask with AskUserQuestion which file to review. Review only `.html`, `.svelte` and `.css` files. For a Svelte component, also read the global stylesheet it relies on, if one is obvious (`app.css`, `+layout.svelte`).
 2. **Load the rules.** Read `${CLAUDE_PLUGIN_ROOT}/skills/html-tables/SKILL.md`, `${CLAUDE_PLUGIN_ROOT}/skills/motion/SKILL.md` and `${CLAUDE_PLUGIN_ROOT}/skills/color/SKILL.md`. Those files are the checklist. Don't audit from memory.
 3. **Read each target in full**, with line numbers, and check it against the sections below.
-4. **Check contrast by computing it.** Resolve each foreground/background pair actually used for text, in both themes, and run `node "${CLAUDE_PLUGIN_ROOT}/skills/color/contrast.js" <fg> <bg>`. Report the measured ratio. Never estimate it.
+4. **Check contrast by computing it.** Resolve each foreground/background pair actually used for text, in both themes, and run `node "${CLAUDE_PLUGIN_ROOT}/skills/color/contrast.js" <fg> <bg>`. Report the measured ratio. Never estimate it. This is the only command the skill runs: no other `node` code, no `node -e`, no shell redirects. It isn't pre-approved, so Claude Code asks before running it.
    - The script takes `#rgb`, `#rrggbb` and `rgb()`. Resolve anything else first: follow `var()` to its token, split `light-dark(a, b)` into a light pair and a dark pair, and convert named colors to hex using the CSS named-color list (`red` is `#ff0000`, `green` is `#008000`). If the script exits non-zero, fix the input. Never report a `NaN`.
    - With no background set anywhere up the tree, measure against `#ffffff`.
    - A page counts as having a dark theme if it uses `light-dark()` with `color-scheme`, a `prefers-color-scheme: dark` block, or a `[data-theme="dark"]` override. Without one, measure the light theme only and report the missing dark theme as its own finding.
