@@ -41,7 +41,7 @@ Skip any section or bullet that doesn't apply (there's no table, no animation, n
 **Motion:**
 
 - Any content (not action-triggered UI) that starts at `opacity: 0` or `visibility: hidden` and depends on an animation, observer or timer to appear. **This is always high severity.**
-- Animated properties other than `transform` and `opacity` (layout properties especially)
+- Animated properties other than `transform` and `opacity` (layout properties especially). The motion rules allow `box-shadow`, `outline` and SVG stroke properties on decorative chrome, and a custom property registered with `@property` that drives only allowed properties; don't flag those. Do flag an animated custom property that isn't registered.
 - Durations of 300ms or more; linear easing on non-loops; exits not faster than entrances
 - Motion on frequent actions (sort, tabs, filters); `scale(0)` starts; more than 3 `will-change`s, or `will-change` in a blanket rule
 - `prefers-reduced-motion` missing, or handled with `animation: none` instead of near-zero durations; Svelte transitions that ignore `prefersReducedMotion`
