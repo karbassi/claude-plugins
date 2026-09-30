@@ -22,11 +22,5 @@
     "./skills/motion",
     "./skills/color",
     "./skills/review"
-  ],
-  "commands": [
-    "./skills/html-tables/html-tables.md",
-    "./skills/motion/motion.md",
-    "./skills/color/color.md",
-    "./skills/review/review.md"
   ]
 }
