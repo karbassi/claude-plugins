@@ -8,7 +8,7 @@ const text = (cell) => {
 };
 const field = (cell) => {
   let s = (cell.dataset.v ?? text(cell)).replace(/\s+/g, " ").trim();
-  if (/^[=+@]|^-(?!\d)/.test(s)) s = `'${s}`;
+  if (/^[=+@]/.test(s) || (s.startsWith("-") && !Number.isFinite(Number(s)))) s = `'${s}`; // only plain negative numbers pass
   return `"${s.replace(/"/g, '""')}"`;
 };
 
