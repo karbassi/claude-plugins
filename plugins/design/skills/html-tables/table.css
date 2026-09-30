@@ -69,7 +69,7 @@ tr.state.error td { color: var(--bad); }
 /* Sortable headers (sort.js wraps each header's contents in a button). */
 table.sortable thead button { all: unset; cursor: pointer; }
 table.sortable thead button:active { transform: none; } /* sorting is frequent: no press motion */
-table.sortable thead button::after { content: "\00a0↕"; opacity: 0.35; } /* nbsp keeps the arrow on the label's line */
+table.sortable thead button::after { content: "\00a0↕"; opacity: 0.75; } /* nbsp keeps the arrow on the label's line; 0.75 keeps it at 3:1 or more on --head in both themes */
 table.sortable th[aria-sort="ascending"] button::after { content: "\00a0↑"; opacity: 1; }
 table.sortable th[aria-sort="descending"] button::after { content: "\00a0↓"; opacity: 1; }
 table.sortable thead button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
