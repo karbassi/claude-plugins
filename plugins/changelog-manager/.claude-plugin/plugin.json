@@ -16,8 +16,5 @@
   ],
   "skills": [
     "./skills/update"
-  ],
-  "commands": [
-    "./skills/update/update.md"
   ]
 }
