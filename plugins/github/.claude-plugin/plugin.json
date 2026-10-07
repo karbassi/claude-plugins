@@ -19,10 +19,5 @@
     "./skills/fix-pr",
     "./skills/status",
     "./skills/worktrees"
-  ],
-  "commands": [
-    "./skills/fix-pr/fix-pr.md",
-    "./skills/status/status.md",
-    "./skills/worktrees/worktrees.md"
   ]
 }

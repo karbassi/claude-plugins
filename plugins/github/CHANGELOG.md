@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Skills ship a real `SKILL.md` again and `plugin.json` no longer registers them as legacy `commands`, now that [anthropics/claude-code#17271](https://github.com/anthropics/claude-code/issues/17271) is fixed
+
 ## [1.5.0] - 2026-03-08
 
 ### Added
