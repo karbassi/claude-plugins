@@ -1,7 +1,7 @@
 {
   "name": "youtube-transcript",
   "description": "Fetch and present transcripts from YouTube videos using yt-dlp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Ali Karbassi"
   },
@@ -9,6 +9,5 @@
   "repository": "https://github.com/karbassi/claude-plugins",
   "license": "MIT",
   "keywords": ["youtube", "transcript", "video", "captions"],
-  "skills": ["./skills/transcript"],
-  "commands": ["./skills/transcript/transcript.md"]
+  "skills": ["./skills/transcript"]
 }

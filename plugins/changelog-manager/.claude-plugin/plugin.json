@@ -1,7 +1,7 @@
 {
   "name": "changelog-manager",
   "description": "Maintain CHANGELOG.md following Keep a Changelog format",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Ali Karbassi"
   },
@@ -16,8 +16,5 @@
   ],
   "skills": [
     "./skills/update"
-  ],
-  "commands": [
-    "./skills/update/update.md"
   ]
 }

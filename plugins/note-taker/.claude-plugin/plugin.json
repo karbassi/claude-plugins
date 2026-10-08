@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "description": "A background note-taker that captures decisions, action items, blockers, and key findings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Ali Karbassi"
   },
@@ -17,7 +17,6 @@
     "./skills/capture"
   ],
   "commands": [
-    "./skills/capture/capture.md",
     "./commands/init.md",
     "./commands/status.md"
   ]
