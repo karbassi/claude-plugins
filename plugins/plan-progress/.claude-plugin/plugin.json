@@ -1,0 +1,28 @@
+{
+  "name": "plan-progress",
+  "version": "1.0.1",
+  "description": "Live plan progress bars above the Claude Code prompt. Fork of zycck/claude-mods with the network update check and self-update removed",
+  "author": {
+    "name": "Kirill Serditov",
+    "url": "https://github.com/zycck"
+  },
+  "homepage": "https://github.com/karbassi/claude-plugins/tree/main/plugins/plan-progress",
+  "repository": "https://github.com/karbassi/claude-plugins",
+  "license": "MIT",
+  "userConfig": {
+    "doneBarSeconds": {
+      "type": "number",
+      "title": "Finished bar stays (seconds)",
+      "description": "Seconds a finished bar stays above the prompt while /plan-progress-autoclose is on",
+      "default": 30,
+      "min": 1
+    },
+    "twinkle": {
+      "type": "boolean",
+      "title": "Twinkle the pixel fill",
+      "description": "Animate the dots of the progress fill and of the agent rows. Off, they are drawn still; clocks, glides and status dots still move",
+      "default": true
+    }
+  },
+  "types": "./types/index.d.ts"
+}

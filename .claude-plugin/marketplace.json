@@ -37,6 +37,10 @@
     {
       "name": "design",
       "source": "./plugins/design"
+    },
+    {
+      "name": "plan-progress",
+      "source": "./plugins/plan-progress"
     }
   ]
 }
